@@ -7,34 +7,24 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState("");
 
   return (
-    <div role="searchbox">
-      <form>
-        <div
-          className={`
-                  flex justify-evenly items-center shadow-sm
-                  border-gray-500 border-solid border px-4 py-2 rounded-md 
-                  focus-within:border-blue-600 group transition-all
-                `}
-        >
-          <SearchIcon className="text-gray-600 group-focus-within:text-blue-600" />
+    <form role="searchbox">
+      <div className="form-control">
+        <label className="relative">
           <input
-            type="text"
+            type="search"
             name="search"
             id="search"
             placeholder="eg. Chicken Breast"
-            className={`
-                    p-1 mx-4 focus:ring-0 flex-1
-                    border-none border-transparent border-0
-                    focus:placeholder:text-blue-500
-                  `}
-            defaultValue=""
+            className="input input-bordered w-full px-16 peer ring-primary"
             value={searchInput}
             onChange={e => setSearchInput(e.target.value)}
           />
+          <SearchIcon className="text-gray-600 peer-focus:text-blue-600 absolute inset-y-0 left-4 my-auto" />
           <Transition
             as="button"
             type="reset"
             show={!!searchInput}
+            className="absolute inset-y-0 my-auto right-4 text-gray-600 peer-focus:text-blue-600"
             enter="transition-transform"
             enterFrom="scale-0"
             enterTo="scale-100"
@@ -46,11 +36,11 @@ const Search = () => {
               setSearchInput("");
             }}
           >
-            <ClearIcon className="text-gray-600 group-focus-within:text-blue-600" />
+            <ClearIcon />
           </Transition>
-        </div>
-      </form>
-    </div>
+        </label>
+      </div>
+    </form>
   );
 };
 

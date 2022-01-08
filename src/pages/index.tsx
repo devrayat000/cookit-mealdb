@@ -1,21 +1,31 @@
-import { useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
-import { useQuery } from "react-query";
+import type { GetStaticProps, NextPage } from "next";
 
 import styles from "../styles/Home.module.css";
-import Search from "../components/search";
-import { client } from "../utils/axios";
+import Search from "$components/search";
+import MealCard from "$components/card/meal";
+import NavBar from "$components/appbar/nav";
+import HeroSection from "$components/card/hero";
+import { client } from "$utils/axios";
+import { IMeal } from "types/meal";
 
-export default function Home() {
-  const { data, error } = useQuery("/random.php", a => {
-    return client.get(a.queryKey[0]).then(r => r.data);
-  });
+const Home: NextPage<HomeProps> = ({ meals }) => {
+  // const { data, error } = useQuery<{ meals: IMeal[] }>(
+  //   "/random.php",
+  //   a => {
+  //     return client.get("/api/meals/random").then(r => r.data);
+  //   },
+  //   { refetchOnWindowFocus: false }
+  // );
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   if (data?.meals) {
+  //     console.log(data.meals);
+
+  //     // console.log(parseIngredients(data["meals"][0]));
+  //   }
+  // }, [meals]);
 
   return (
     <main>
@@ -25,62 +35,39 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="sticky top-0 p-2 shadow-md bg-white">
-        <nav>
-          <Link href="/">
-            <a className="block text-blue-700 my-2 mx-12 font-bold text-3xl">
-              MealDB
-            </a>
-          </Link>
-        </nav>
-      </header>
+      <NavBar />
 
-      <section className="max-w-screen-md mx-auto my-4 flex justify-center flex-col items-stretch">
-        <Search />
+      <HeroSection />
+
+      <section className="container mx-auto my-4 p-4 flex justify-center flex-col items-stretch">
+        <section className="flex flex-col items-stretch my-8">
+          <div role="heading" aria-level={2} className="m-4">
+            <h1 className="text-center">
+              Search for <span className="text-fuchsia-600">Delicious</span>{" "}
+              Meals
+            </h1>
+          </div>
+          <Search />
+        </section>
 
         <div role="heading" aria-level={2} className="flex justify-center m-4">
-          <h1 className="m-0">
+          <h1>
             Random <span className="text-blue-600">Meals</span>
           </h1>
         </div>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <article
+          role="article"
+          className="flex justify-center items-stretch flex-wrap gap-3 container"
+          // className="grid grid-cols-2 grid-rows-5 gap-2"
+        >
+          {meals.map(meal => {
+            return <MealCard key={meal["idMeal"]} meal={meal} />;
+          })}
+        </article>
       </section>
 
-      <footer className={styles.footer}>
+      <footer className="p-4 footer bg-base-300 text-base-content footer footer-center">
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -94,4 +81,21 @@ export default function Home() {
       </footer>
     </main>
   );
+};
+
+export default Home;
+
+export const getStaticProps: GetStaticProps<HomeProps> = async ctx => {
+  const res = await client.get("/api/meals/random");
+
+  return {
+    props: {
+      meals: res.data.meals,
+    },
+    revalidate: 1 * 60,
+  };
+};
+
+interface HomeProps {
+  meals: IMeal[];
 }
