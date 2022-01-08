@@ -8,7 +8,7 @@ import MealCard from "$components/card/meal";
 import NavBar from "$components/appbar/nav";
 import HeroSection from "$components/card/hero";
 import { client } from "$utils/axios";
-import { IMeal } from "types/meal";
+import type { IMeal } from "types/meal";
 
 const Home: NextPage<HomeProps> = ({ meals }) => {
   // const { data, error } = useQuery<{ meals: IMeal[] }>(

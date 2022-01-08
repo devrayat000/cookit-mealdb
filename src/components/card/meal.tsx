@@ -43,7 +43,7 @@ const MealCard = ({ meal }: { meal: IMeal }) => {
               <a
                 href={meal["strYoutube"]}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="flex text-red-600 text-2xl"
                 onClick={e => {
                   e.stopPropagation();

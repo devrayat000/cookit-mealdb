@@ -11,7 +11,7 @@ mealdb.interceptors.request.use(config => {
 });
 
 mealdb.interceptors.response.use(config => {
-  console.log(config.status, config.data);
+  console.log(config.status, "config.data");
   return config;
 });
 
@@ -26,6 +26,6 @@ client.interceptors.request.use(config => {
 });
 
 client.interceptors.response.use(config => {
-  console.log(config.status, config.data);
+  console.log(config.status, "config.data");
   return config;
 });

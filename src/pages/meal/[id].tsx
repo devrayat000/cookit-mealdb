@@ -4,42 +4,151 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { parseIngredients } from "$utils/parse_ingredients";
 import { mealdb, client } from "$utils/axios";
 import type { IMeal } from "types/meal";
+import { useEffect } from "react";
+import { config } from "$utils/config";
+import { Disclosure, Transition } from "@headlessui/react";
+import ChevronUpIcon from "$components/icons/chevron_up";
+import Image from "next/image";
 
 const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
   return (
     <main className="m-4">
-      <section className="container mx-auto">
-        <h1 className="text-center">{meal.strMeal}</h1>
-        <section className="flex justify-between items-center">
-          {meal.strYoutube && (
-            <iframe
-              // width="420"
-              // height="345"
-              className="aspect-video w-full"
-              src={meal.strYoutube.replace("watch?v=", "embed/")}
-            />
+      <section aria-labelledby="meal-name" className="container mx-auto">
+        <h1 role="heading" id="meal-name" className="text-center">
+          {meal.strMeal}
+        </h1>
+
+        <section className="flex justify-between items-start mb-8">
+          <div className="flex-1 lg:flex-2 prose-h3:m-0">
+            {meal.strCategory && (
+              <div className="flex my-2 mx-1">
+                <span>Category:&nbsp;</span>
+                <h3>{meal.strCategory}</h3>
+              </div>
+            )}
+            {meal.strArea && (
+              <div className="flex my-2 mx-1">
+                <span>Area:&nbsp;</span>
+                <h3>{meal.strArea}</h3>
+              </div>
+            )}
+            {meal.strTags && (
+              <div className="text-sm breadcrumbs">
+                <ul>
+                  {meal.strTags.split(",").map(tag => (
+                    <li key={`tag-${tag}`}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {meal.strSource && (
+              <a
+                href={meal.strSource}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn btn-secondary"
+              >
+                View Original
+              </a>
+            )}
+          </div>
+          {meal.strMealThumb && (
+            <div className="relative flex-1 aspect-square min-w-min">
+              <Image
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="right top"
+                sizes="100vw"
+                className="rounded-md"
+              />
+            </div>
           )}
         </section>
-        <article className="flex justify-between items-center">
-          <ul className="list-none ing-list">
-            {meal.ingredients.map(ingredient => {
-              return (
-                <li key={ingredient.item}>
-                  <span>{ingredient.item}</span>
-                  <span>&nbsp;-&nbsp;</span>
-                  <span>{ingredient.measure}</span>
+
+        <article className="">
+          {meal.strYoutube && (
+            <Disclosure as="section">
+              {({ open }) => (
+                <>
+                  <Disclosure.Button
+                    role="checkbox"
+                    className={`
+                    flex justify-between items-center w-full px-4 py-2 text-md font-medium
+                    text-left text-blue-600 bg-blue-100 rounded-lg
+                    hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500
+                    focus-visible:ring-opacity-75 ${
+                      open ? "rounded-b-none" : ""
+                    }
+                  `}
+                  >
+                    <span>Wanna see how it&apos;s made?</span>
+                    <ChevronUpIcon
+                      className={`${
+                        !open ? "rotate-180" : ""
+                      } transition-transform text-blue-500
+                    `}
+                    />
+                  </Disclosure.Button>
+                  <Transition
+                    appear
+                    show={open}
+                    aria-expanded={open}
+                    enter="transition-all origin-top duration-700 ease-out"
+                    enterFrom="scale-y-0 opacity-0"
+                    enterTo="scale-y-100 opacity-100"
+                    leave="transition-all origin-top duration-700 ease-out"
+                    leaveFrom="scale-y-100 opacity-100"
+                    leaveTo="scale-y-0 opacity-0"
+                    unmount={false}
+                  >
+                    <Disclosure.Panel
+                      static
+                      aria-hidden={!open}
+                      as="iframe"
+                      className="aspect-video w-full"
+                      title={meal.strMeal}
+                      name="Meal recipe on Youtube"
+                      src={meal.strYoutube!.replace("watch?v=", "embed/")}
+                    />
+                  </Transition>
+                </>
+              )}
+            </Disclosure>
+          )}
+          <section className="">
+            <h2 className="text-center">Ingredients</h2>
+            <ul className="list-none list-inside ing-list grid md:grid-cols-2 lg:grid-cols-3">
+              {meal.ingredients.map(ingredient => {
+                return (
+                  <li key={ingredient.item}>
+                    <span>{ingredient.item}</span>
+                    <span>&nbsp;-&nbsp;</span>
+                    <span>{ingredient.measure}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+          <section className="flex-2">
+            <h2 className="text-center">Instructions</h2>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: meal.strInstructions
+                  .replaceAll("\n", "<br/>")
+                  .replaceAll(/(STEP\s\d+)/gi, "<b>$1</b>"),
+              }}
+            />
+            {/* <ul className="list-none">
+              {meal.strInstructions.split("\n").map(ins => (
+                <li key={ins.substring(0, 8)}>
+                  <p>{ins}</p>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul> */}
+          </section>
         </article>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: meal.strInstructions
-              .replaceAll("\n", "<br/>")
-              .replaceAll(/(STEP\s\d+)/gi, "<b>$1</b>"),
-          }}
-        />
       </section>
     </main>
   );
@@ -67,7 +176,7 @@ export const getStaticPaths: GetStaticPaths = async ctx => {
 };
 
 export const getStaticProps: GetStaticProps<
-  any,
+  { meal: IMeal },
   { id: string }
 > = async ctx => {
   const id = ctx.params?.id;
