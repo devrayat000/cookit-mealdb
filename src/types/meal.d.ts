@@ -1,6 +1,6 @@
 import { Maybe } from "types";
 
-export type IMeal = {
+export interface IMeal {
   dateModified: Maybe<string>;
   idMeal: string;
   ingredients: Ingredient[];
@@ -15,7 +15,7 @@ export type IMeal = {
   strSource: Maybe<string>;
   strTags: Maybe<string>;
   strYoutube: Maybe<string>;
-};
+}
 
 export interface Ingredient {
   item: string;
