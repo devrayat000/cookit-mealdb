@@ -1,5 +1,3 @@
-const { withPlaiceholder } = require('@plaiceholder/next')
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -14,7 +12,8 @@ const config = {
   experimental: {
     optimizeImages: true,
     scrollRestoration: true,
+    removeConsole: true,
   },
 }
 
-module.exports = withPlaiceholder(config)
+module.exports = config

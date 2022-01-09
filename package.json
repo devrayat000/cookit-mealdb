@@ -8,6 +8,10 @@
     "email": "dev.rayat000@gmail.com",
     "name": "Musaddik Rayat"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devRayat/cookit-mealdb.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
