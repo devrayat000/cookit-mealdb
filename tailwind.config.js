@@ -2,24 +2,24 @@
  * @type {import('tailwindcss/tailwind-config').TailwindConfig}
  */
 module.exports = {
-  content: ["src/**/*.{ts,tsx}"],
+  content: ['src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       zIndex: {
-        appbar: "1200",
+        appbar: '1200',
       },
       flexGrow: {
         2: 2,
       },
       flex: {
-        2: "2 1 0%",
+        2: '2 1 0%',
       },
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/line-clamp"),
-    require("daisyui"),
+    require('@tailwindcss/typography'),
+    // require("@tailwindcss/forms"),
+    require('@tailwindcss/line-clamp'),
+    require('daisyui'),
   ],
-};
+}

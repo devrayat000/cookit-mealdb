@@ -1,15 +1,14 @@
+import { mealdb } from './axios'
+import { parseIngredients } from './parse_ingredients'
+
 export async function getRandomMeals(limit: number = 10) {
-  let worker = new Worker(
-    new URL("../workers/random.worker.ts", import.meta.url)
-  );
-  worker.postMessage(limit);
-  return new Promise<any>((resolve, reject) => {
-    worker.addEventListener("message", e => {
-      console.log("helper logs:", e.data);
-      resolve(e.data);
-    });
-    worker.addEventListener("error", e => {
-      reject(e.error);
-    });
-  });
+  let arr = Array.from(new Array(limit).keys())
+
+  let mealsPromise = arr.map(async it => {
+    let a = await mealdb.get('/random.php').then(r => r.data)
+    return parseIngredients(a['meals'][0])
+  })
+  const meals = await Promise.all(mealsPromise)
+
+  return { meals }
 }

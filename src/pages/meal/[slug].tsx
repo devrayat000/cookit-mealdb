@@ -1,19 +1,20 @@
+import type { ParsedUrlQuery } from 'querystring'
+
+// import { useEffect } from 'react'
+import Image from 'next/image'
+// import { useRouter } from 'next/router'
+import { Disclosure, Transition } from '@headlessui/react'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-// import { useRouter } from "next/router";
 
 import { parseIngredients } from '$utils/parse_ingredients'
 import { mealdb, client } from '$utils/axios'
-import type { IMeal } from 'types/meal'
-import { useEffect } from 'react'
-import { config } from '$utils/config'
-import { Disclosure, Transition } from '@headlessui/react'
 import ChevronUpIcon from '$components/icons/chevron_up'
-import Image from 'next/image'
-import Link from 'next/link'
-import { makeSlug } from '$utils/slug'
+import { extractIdFromSlug, makeSlug } from '$utils/slug'
 import CategoryLink from '$components/link/category'
+import type { IMeal } from 'types/meal'
+import { getRandomMeals } from '$utils/random_meals'
 
-const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
+const MealById: NextPage<MealByIdProps> = ({ meal }) => {
   return (
     <main className="m-4">
       <section aria-labelledby="meal-name" className="container mx-auto">
@@ -162,14 +163,18 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async ctx => {
+export const getStaticPaths: GetStaticPaths<StaticPath> = async ctx => {
   try {
-    const res = await client.get('/api/meals/random')
-    const meals = res.data.meals as IMeal[]
+    // const res = await client.get('/api/meals/random')
+    // const meals = res.data.meals as IMeal[]
+    const { meals } = await getRandomMeals(1)
 
     const paths = meals.map(meal => {
       return {
-        params: { id: meal['idMeal'] },
+        params: {
+          id: meal['idMeal'],
+          slug: `${makeSlug(meal.strMeal)}_${meal.idMeal}`,
+        },
       }
     })
 
@@ -184,12 +189,15 @@ export const getStaticPaths: GetStaticPaths = async ctx => {
 }
 
 export const getStaticProps: GetStaticProps<
-  { meal: IMeal },
-  { id: string }
+  MealByIdProps,
+  StaticPath
 > = async ctx => {
-  const id = ctx.params?.id
+  const slug = ctx.params?.slug!
+  const id = extractIdFromSlug(slug)
 
-  const res = await mealdb.get('/lookup.php', { params: { i: id } })
+  const res = await mealdb.get<{ meals: IMeal[] }>('/lookup.php', {
+    params: { i: id },
+  })
 
   if (res.status == 404) {
     return {
@@ -199,10 +207,19 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
-      meal: parseIngredients(res.data['meals'][0]),
+      meal: parseIngredients(res.data.meals[0]),
     },
     revalidate: 60 * 60 * 24,
   }
+}
+
+interface StaticPath extends ParsedUrlQuery {
+  id: string
+  slug: string
+}
+
+interface MealByIdProps {
+  meal: IMeal
 }
 
 export default MealById

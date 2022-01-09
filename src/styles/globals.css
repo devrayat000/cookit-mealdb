@@ -20,8 +20,7 @@
     prose-h4:text-sm md:prose-h4:text-base
     prose-li:my-1
     prose-ul:pl-0
-    prose-p:text-justify
-    scroll-smooth;
+    prose-p:text-justify;
   }
 
   input[type="search"]::-webkit-search-decoration,

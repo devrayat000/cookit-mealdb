@@ -1,7 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
-import { makeSlug } from '$utils/slug'
 import { ICategory } from 'types/category'
 import CategoryLink from '$components/link/category'
 
