@@ -1,9 +1,9 @@
-import Head from "next/head";
-import type { GetStaticProps, NextPage } from "next";
+import Head from 'next/head'
+import type { GetStaticProps, NextPage } from 'next'
 
-import type { ICategory } from "types/category";
-import { mealdb } from "$utils/axios";
-import CategoryCard from "$components/card/category";
+import { mealdb } from '$utils/axios'
+import CategoryCard from '$components/card/category'
+import type { ICategory } from 'types/category'
 
 const CategoryPage: NextPage<CategoryPageProps> = ({ categories }) => {
   return (
@@ -21,28 +21,28 @@ const CategoryPage: NextPage<CategoryPageProps> = ({ categories }) => {
           {categories.map(category => {
             return (
               <CategoryCard key={category.idCategory} category={category} />
-            );
+            )
           })}
         </article>
       </section>
     </main>
-  );
-};
-
-CategoryPage.displayName = "Category";
-
-export const getStaticProps: GetStaticProps<CategoryPageProps> = async ctx => {
-  const res = await mealdb.get("/categories.php");
-  return {
-    props: {
-      categories: res.data["categories"],
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
-
-export interface CategoryPageProps {
-  categories: ICategory[];
+  )
 }
 
-export default CategoryPage;
+CategoryPage.displayName = 'Category'
+
+export const getStaticProps: GetStaticProps<CategoryPageProps> = async ctx => {
+  const res = await mealdb.get('/categories.php')
+  return {
+    props: {
+      categories: res.data['categories'],
+    },
+    revalidate: 60 * 60 * 24,
+  }
+}
+
+export interface CategoryPageProps {
+  categories: ICategory[]
+}
+
+export default CategoryPage

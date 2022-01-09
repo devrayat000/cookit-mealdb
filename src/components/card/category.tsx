@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import { ICategory } from 'types/category'
 import CategoryLink from '$components/link/category'
+import type { ICategory } from 'types/category'
 
 const CategoryCard: React.FC<{ category: ICategory }> = ({ category }) => {
   return (

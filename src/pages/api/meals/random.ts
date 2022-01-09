@@ -1,13 +1,13 @@
 import { getRandomMeals } from '$utils/random_meals'
 import { StatusCodes, ReasonPhrases } from 'http-status-codes'
-import * as yup from 'yup'
+import { object, number } from 'yup'
 
-import { mealdb } from '../../../utils/axios'
+// import { mealdb } from '../../../utils/axios'
 import handler from '../../../utils/connect'
-import { parseIngredients } from '../../../utils/parse_ingredients'
+// import { parseIngredients } from '../../../utils/parse_ingredients'
 
-const randomQueryValidator = yup.object().shape({
-  limit: yup.number().integer().default(10),
+const randomQueryValidator = object().shape({
+  limit: number().integer().default(10),
 })
 
 export default handler.get(async (req, res, next) => {

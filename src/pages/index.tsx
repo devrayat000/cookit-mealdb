@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Search from '$components/search'
 import NavBar from '$components/appbar/nav'
 import Meals from '$components/list/meals'
 import HeroSection from '$components/card/hero'
-import { getRandomMeals } from '$utils/random_meals'
 import PrimaryAction from '$components/button/primary_action'
-import type { IMeal } from 'types/meal'
 import Footer from '$components/card/footer'
+import { getRandomMeals } from '$utils/random_meals'
+import type { IMeal } from 'types/meal'
 
 const Home: NextPage<HomeProps> = ({ meals }) => {
   // const { data, error } = useQuery<{ meals: IMeal[] }>(

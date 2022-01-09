@@ -1,10 +1,11 @@
-import { Transition } from "@headlessui/react";
-import { useState } from "react";
-import ClearIcon from "./clear_icon";
-import SearchIcon from "./search_icon";
+import { useState } from 'react'
+import { Transition } from '@headlessui/react'
+
+import ClearIcon from './clear_icon'
+import SearchIcon from './search_icon'
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('')
 
   return (
     <form role="searchbox">
@@ -32,8 +33,8 @@ const Search = () => {
             leaveFrom="scale-100"
             leaveTo="scale-0"
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.preventDefault();
-              setSearchInput("");
+              e.preventDefault()
+              setSearchInput('')
             }}
           >
             <ClearIcon />
@@ -41,7 +42,7 @@ const Search = () => {
         </label>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search

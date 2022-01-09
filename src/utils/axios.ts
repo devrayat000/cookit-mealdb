@@ -5,27 +5,29 @@ export const mealdb = axios.create({
   method: 'GET',
 })
 
-mealdb.interceptors.request.use(config => {
-  console.log(config.method, config.params)
-  return config
-})
-
-mealdb.interceptors.response.use(config => {
-  console.log(config.status, 'config.data')
-  return config
-})
-
 export const client = axios.create({
   baseURL: '/',
   method: 'GET',
 })
 
-client.interceptors.request.use(config => {
-  console.log(config.method, config.params)
-  return config
-})
+if (process.env.NODE_ENV === 'development') {
+  mealdb.interceptors.request.use(config => {
+    console.log(config.method, config.params)
+    return config
+  })
 
-client.interceptors.response.use(config => {
-  console.log(config.status, 'config.data')
-  return config
-})
+  mealdb.interceptors.response.use(config => {
+    console.log(config.status, 'config.data')
+    return config
+  })
+
+  client.interceptors.request.use(config => {
+    console.log(config.method, config.params)
+    return config
+  })
+
+  client.interceptors.response.use(config => {
+    console.log(config.status, 'config.data')
+    return config
+  })
+}

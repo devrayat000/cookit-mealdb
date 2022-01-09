@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { IMeal, IMealBase } from 'types/meal'
-import { Maybe } from 'types'
+// import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import MealLink from '$components/link/meal'
+import type { IMealFromCategory } from 'types/meal'
+import YoutubeIcon from '$components/icons/youtube'
 
 const MealCard: React.FC<MealCardProps> = ({ meal }) => {
   return (
@@ -41,12 +41,13 @@ const MealCard: React.FC<MealCardProps> = ({ meal }) => {
                 href={meal.strYoutube}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex text-red-600 text-2xl"
+                className="flex text-red-600 text-3xl"
                 onClick={e => {
                   e.stopPropagation()
                 }}
               >
-                <FontAwesomeIcon icon={faYoutube} aria-hidden={false} />
+                {/* <FontAwesomeIcon icon={faYoutube} aria-hidden={false} /> */}
+                <YoutubeIcon aria-hidden={false} data-icon="youtube" />
               </a>
             )}
           </div>
@@ -57,10 +58,7 @@ const MealCard: React.FC<MealCardProps> = ({ meal }) => {
 }
 
 export interface MealCardProps {
-  meal: IMealBase & {
-    strCategory?: Maybe<string>
-    strYoutube?: Maybe<string>
-  }
+  meal: IMealFromCategory
 }
 
 export default MealCard

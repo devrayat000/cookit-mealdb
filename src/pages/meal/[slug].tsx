@@ -11,8 +11,8 @@ import { mealdb, client } from '$utils/axios'
 import ChevronUpIcon from '$components/icons/chevron_up'
 import { extractIdFromSlug, makeSlug } from '$utils/slug'
 import CategoryLink from '$components/link/category'
-import type { IMeal } from 'types/meal'
 import { getRandomMeals } from '$utils/random_meals'
+import type { IMeal } from 'types/meal'
 
 const MealById: NextPage<MealByIdProps> = ({ meal }) => {
   return (

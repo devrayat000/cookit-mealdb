@@ -39,11 +39,3 @@
     font-size: 60%;
   }
 }
-
-ul.ing-list {
-  list-style-image: url("/images/garnish_1_16x16.png");
-}
-
-ul.ing-list li::marker {
-  font-size: 1em;
-}
