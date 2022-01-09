@@ -1,6 +1,9 @@
-export interface ICategory {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-  strCategoryDescription: string;
+export interface ICategoryBase {
+  strCategory: string
+}
+
+export interface ICategory extends ICategoryBase {
+  idCategory: string
+  strCategoryThumb: string
+  strCategoryDescription: string
 }

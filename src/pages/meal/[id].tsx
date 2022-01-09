@@ -1,14 +1,17 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 // import { useRouter } from "next/router";
 
-import { parseIngredients } from "$utils/parse_ingredients";
-import { mealdb, client } from "$utils/axios";
-import type { IMeal } from "types/meal";
-import { useEffect } from "react";
-import { config } from "$utils/config";
-import { Disclosure, Transition } from "@headlessui/react";
-import ChevronUpIcon from "$components/icons/chevron_up";
-import Image from "next/image";
+import { parseIngredients } from '$utils/parse_ingredients'
+import { mealdb, client } from '$utils/axios'
+import type { IMeal } from 'types/meal'
+import { useEffect } from 'react'
+import { config } from '$utils/config'
+import { Disclosure, Transition } from '@headlessui/react'
+import ChevronUpIcon from '$components/icons/chevron_up'
+import Image from 'next/image'
+import Link from 'next/link'
+import { makeSlug } from '$utils/slug'
+import CategoryLink from '$components/link/category'
 
 const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
   return (
@@ -23,7 +26,12 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
             {meal.strCategory && (
               <div className="flex my-2 mx-1">
                 <span>Category:&nbsp;</span>
-                <h3>{meal.strCategory}</h3>
+                <CategoryLink
+                  category={meal.strCategory}
+                  className="link link-hover"
+                >
+                  <h3>{meal.strCategory}</h3>
+                </CategoryLink>
               </div>
             )}
             {meal.strArea && (
@@ -35,7 +43,7 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
             {meal.strTags && (
               <div className="text-sm breadcrumbs">
                 <ul>
-                  {meal.strTags.split(",").map(tag => (
+                  {meal.strTags.split(',').map(tag => (
                     <li key={`tag-${tag}`}>{tag}</li>
                   ))}
                 </ul>
@@ -79,14 +87,14 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
                     text-left text-blue-600 bg-blue-100 rounded-lg
                     hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500
                     focus-visible:ring-opacity-75 ${
-                      open ? "rounded-b-none" : ""
+                      open ? 'rounded-b-none' : ''
                     }
                   `}
                   >
                     <span>Wanna see how it&apos;s made?</span>
                     <ChevronUpIcon
                       className={`${
-                        !open ? "rotate-180" : ""
+                        !open ? 'rotate-180' : ''
                       } transition-transform text-blue-500
                     `}
                     />
@@ -110,7 +118,7 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
                       className="aspect-video w-full"
                       title={meal.strMeal}
                       name="Meal recipe on Youtube"
-                      src={meal.strYoutube!.replace("watch?v=", "embed/")}
+                      src={meal.strYoutube!.replace('watch?v=', 'embed/')}
                     />
                   </Transition>
                 </>
@@ -127,7 +135,7 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
                     <span>&nbsp;-&nbsp;</span>
                     <span>{ingredient.measure}</span>
                   </li>
-                );
+                )
               })}
             </ul>
           </section>
@@ -136,8 +144,8 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
             <p
               dangerouslySetInnerHTML={{
                 __html: meal.strInstructions
-                  .replaceAll("\n", "<br/>")
-                  .replaceAll(/(STEP\s\d+)/gi, "<b>$1</b>"),
+                  .replaceAll('\n', '<br/>')
+                  .replaceAll(/(STEP\s\d+)/gi, '<b>$1</b>'),
               }}
             />
             {/* <ul className="list-none">
@@ -151,50 +159,50 @@ const MealById: NextPage<{ meal: IMeal }> = ({ meal }) => {
         </article>
       </section>
     </main>
-  );
-};
+  )
+}
 
 export const getStaticPaths: GetStaticPaths = async ctx => {
   try {
-    const res = await client.get("/api/meals/random");
-    const meals = res.data.meals as IMeal[];
+    const res = await client.get('/api/meals/random')
+    const meals = res.data.meals as IMeal[]
 
     const paths = meals.map(meal => {
       return {
-        params: { id: meal["idMeal"] },
-      };
-    });
+        params: { id: meal['idMeal'] },
+      }
+    })
 
     return {
       paths,
-      fallback: "blocking",
-    };
+      fallback: 'blocking',
+    }
   } catch (error) {
-    console.log(error.message);
-    throw error;
+    console.log(error.message)
+    throw error
   }
-};
+}
 
 export const getStaticProps: GetStaticProps<
   { meal: IMeal },
   { id: string }
 > = async ctx => {
-  const id = ctx.params?.id;
+  const id = ctx.params?.id
 
-  const res = await mealdb.get("/lookup.php", { params: { i: id } });
+  const res = await mealdb.get('/lookup.php', { params: { i: id } })
 
   if (res.status == 404) {
     return {
       notFound: true,
-    };
+    }
   }
 
   return {
     props: {
-      meal: parseIngredients(res.data["meals"][0]),
+      meal: parseIngredients(res.data['meals'][0]),
     },
     revalidate: 60 * 60 * 24,
-  };
-};
+  }
+}
 
-export default MealById;
+export default MealById

@@ -1,14 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import type { GetStaticProps, NextPage } from "next";
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import type { GetStaticProps, NextPage } from 'next'
 
-import styles from "../styles/Home.module.css";
-import Search from "$components/search";
-import MealCard from "$components/card/meal";
-import NavBar from "$components/appbar/nav";
-import HeroSection from "$components/card/hero";
-import { client } from "$utils/axios";
-import type { IMeal } from "types/meal";
+import styles from '../styles/Home.module.css'
+import Search from '$components/search'
+import NavBar from '$components/appbar/nav'
+import Meals from '$components/list/meals'
+import HeroSection from '$components/card/hero'
+import { client } from '$utils/axios'
+import type { IMeal } from 'types/meal'
 
 const Home: NextPage<HomeProps> = ({ meals }) => {
   // const { data, error } = useQuery<{ meals: IMeal[] }>(
@@ -37,34 +38,60 @@ const Home: NextPage<HomeProps> = ({ meals }) => {
 
       <NavBar />
 
-      <HeroSection />
+      <section className="flex justify-between flex-col items-center">
+        <HeroSection
+          title="Hello there"
+          description="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+        excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+        a id nisi."
+          image="https://www.themealdb.com/images/icons/favicon/apple-touch-icon.png"
+          action={
+            <div className="flex gap-2">
+              <Link href="/#random_meals" scroll={false}>
+                <a className="btn btn-primary transition-transform hover:scale-105">
+                  Get Started
+                </a>
+              </Link>
+              <Link href="/meal/category">
+                <a
+                  title="Categories"
+                  className="btn btn-secondary btn-outline transition-transform hover:scale-105"
+                >
+                  Categories
+                </a>
+              </Link>
+            </div>
+          }
+        />
 
-      <section className="container mx-auto my-4 p-4 flex justify-center flex-col items-stretch">
-        <section className="flex flex-col items-stretch my-8">
-          <div role="heading" aria-level={2} className="m-4">
-            <h1 className="text-center">
-              Search for <span className="text-fuchsia-600">Delicious</span>{" "}
-              Meals
+        <section className="container mx-auto my-4 p-4 flex justify-center flex-col items-stretch">
+          <section className="flex flex-col items-stretch my-8">
+            <div
+              role="heading"
+              id="random_meals"
+              aria-level={2}
+              className="m-4"
+            >
+              <h1 className="text-center">
+                Search for <span className="text-fuchsia-600">Delicious</span>{' '}
+                Meals
+              </h1>
+            </div>
+            <Search />
+          </section>
+
+          <div
+            role="heading"
+            aria-level={2}
+            className="flex justify-center m-4"
+          >
+            <h1>
+              Random <span className="text-blue-600">Meals</span>
             </h1>
           </div>
-          <Search />
+
+          <Meals meals={meals} />
         </section>
-
-        <div role="heading" aria-level={2} className="flex justify-center m-4">
-          <h1>
-            Random <span className="text-blue-600">Meals</span>
-          </h1>
-        </div>
-
-        <article
-          role="article"
-          className="flex justify-center items-stretch flex-wrap gap-3 container"
-          // className="grid grid-cols-2 grid-rows-5 gap-2"
-        >
-          {meals.map(meal => {
-            return <MealCard key={meal["idMeal"]} meal={meal} />;
-          })}
-        </article>
       </section>
 
       <footer className="p-4 footer bg-base-300 text-base-content footer footer-center">
@@ -73,29 +100,29 @@ const Home: NextPage<HomeProps> = ({ meals }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </main>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
 
 export const getStaticProps: GetStaticProps<HomeProps> = async ctx => {
-  const res = await client.get("/api/meals/random");
+  const res = await client.get('/api/meals/random')
 
   return {
     props: {
       meals: res.data.meals,
     },
     revalidate: 1 * 60,
-  };
-};
+  }
+}
 
 interface HomeProps {
-  meals: IMeal[];
+  meals: IMeal[]
 }
