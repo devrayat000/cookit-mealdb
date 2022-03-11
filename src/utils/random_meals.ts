@@ -1,6 +1,9 @@
+import { IMeal } from 'types/meal'
 import { mealdb } from './axios'
 import { parseIngredients } from './parse_ingredients'
 
+export async function getRandomMeals(): Promise<{ meals: IMeal[] }>
+export async function getRandomMeals(limit: number): Promise<{ meals: IMeal[] }>
 export async function getRandomMeals(limit: number = 10) {
   let arr = Array.from(new Array(limit).keys())
 

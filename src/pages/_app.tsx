@@ -1,3 +1,4 @@
+import NavBar from '$components/appbar/nav'
 import type { AppProps } from 'next/app'
 
 import '../styles/globals.css'
@@ -14,7 +15,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     // <QueryClientProvider client={queryClient}>
     //   <Hydrate>
-    <Component {...pageProps} />
+    <>
+      <NavBar />
+
+      <Component {...pageProps} />
+    </>
     //   </Hydrate>
     // </QueryClientProvider>
   )
