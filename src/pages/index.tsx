@@ -66,7 +66,7 @@ const Home: NextPage<HomeProps> = ({ meals }) => {
 
           <div
             role="heading"
-            aria-level={2}
+            aria-level={3}
             className="flex justify-center m-4"
           >
             <h1>
