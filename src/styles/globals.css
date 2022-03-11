@@ -13,7 +13,7 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    @apply max-w-none bg-gray-50 prose 
+    @apply max-w-none bg-gray-50 prose scroll-smooth 
     prose-h1:text-3xl md:prose-h1:text-4xl 
     prose-h2:text-xl md:prose-h2:text-2xl
     prose-h3:text-base md:prose-h3:text-xl
