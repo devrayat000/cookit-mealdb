@@ -11,10 +11,29 @@ import { getRandomMeals } from '$utils/random_meals'
 import { Info, Ingredient, Youtube } from '$components/meal'
 import Breadcrumb from '$components/list/breadcrumb'
 import type { IMeal } from 'types/meal'
+import { NextSeo } from 'next-seo'
 
 const MealById: NextPage<MealByIdProps> = ({ meal }) => {
   return (
     <main className="m-4">
+      <NextSeo
+        title={`${meal.strMeal} | COOKit`}
+        description={meal.strInstructions}
+        additionalLinkTags={[{ rel: 'icon', href: '/images/garnish.png' }]}
+        openGraph={{
+          title: `${meal.strMeal} | COOKit`,
+          description: meal.strInstructions,
+          url: `https://cookingit.netlify.app/meal/${makeSlug(meal.strMeal)}_${
+            meal.idMeal
+          }`,
+          images: [
+            {
+              url: meal.strMealThumb ?? '/demos/intro.png',
+              alt: `${meal.strMeal} | COOKit`,
+            },
+          ],
+        }}
+      />
       <section aria-labelledby="meal-name" className="container mx-auto">
         <h1 role="heading" id="meal-name" className="text-center">
           {meal.strMeal}

@@ -10,11 +10,28 @@ import { makeSlug } from '$utils/slug'
 import { capitalize } from '$utils/capitalize'
 import { categoryBySlug } from '$utils/category_by_slug'
 import HeroSection from '$components/card/hero'
+import { NextSeo } from 'next-seo'
 
 // TODO: Implement Category details page
 const Category: NextPage<MealByCategoryProps> = ({ meals, category }) => {
   return (
     <main className="flex flex-col justify-between items-center">
+      <NextSeo
+        title={`Category - ${capitalize(category.strCategory)} | COOKit`}
+        description={category.strCategoryDescription}
+        additionalLinkTags={[{ rel: 'icon', href: '/images/garnish.png' }]}
+        openGraph={{
+          title: `Category - ${capitalize(category.strCategory)} | COOKit`,
+          description: category.strCategoryDescription,
+          url: `https://cookingit.netlify.app/category/${category.strCategory}`,
+          images: [
+            {
+              url: category.strCategoryThumb ?? '/demos/categories.png',
+              alt: `Category - ${capitalize(category.strCategory)} | COOKit`,
+            },
+          ],
+        }}
+      />
       <Head>
         <title>Category | {capitalize(category.strCategory)}</title>
       </Head>
