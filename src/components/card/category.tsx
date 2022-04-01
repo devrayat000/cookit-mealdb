@@ -8,7 +8,7 @@ const CategoryCard: React.FC<{ category: ICategory }> = ({ category }) => {
     <CategoryLink
       key={category.idCategory}
       category={category.strCategory}
-      className="card card-compact shadow-md p-2 bg-base-100 hover:shadow-lg flex justify-end relative aspect-square w-80"
+      className="card card-compact shadow-md p-2 bg-base-100 hover:shadow-lg transition-shadow flex justify-end relative aspect-square w-80"
     >
       <Image
         src={category.strCategoryThumb}

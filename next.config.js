@@ -9,10 +9,14 @@ const config = {
     deviceSizes: [640, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   experimental: {
     optimizeImages: true,
     scrollRestoration: true,
-    removeConsole: true,
+    reactRoot: true,
+    concurrentFeatures: true,
   },
 }
 

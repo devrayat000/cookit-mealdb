@@ -3,7 +3,6 @@ import Head from 'next/head'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Search from '$components/search'
-import NavBar from '$components/appbar/nav'
 import Meals from '$components/list/meals'
 import HeroSection from '$components/card/hero'
 import PrimaryAction from '$components/button/primary_action'
@@ -12,22 +11,6 @@ import { getRandomMeals } from '$utils/random_meals'
 import type { IMeal } from 'types/meal'
 
 const Home: NextPage<HomeProps> = ({ meals }) => {
-  // const { data, error } = useQuery<{ meals: IMeal[] }>(
-  //   "/random.php",
-  //   a => {
-  //     return client.get("/api/meals/random").then(r => r.data);
-  //   },
-  //   { refetchOnWindowFocus: false }
-  // );
-
-  // useEffect(() => {
-  //   if (data?.meals) {
-  //     console.log(data.meals);
-
-  //     // console.log(parseIngredients(data["meals"][0]));
-  //   }
-  // }, [meals]);
-
   return (
     <main>
       <Head>
