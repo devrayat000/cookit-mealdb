@@ -21,7 +21,7 @@ const Category: NextPage<MealByCategoryProps> = ({ meals, category }) => {
       <section className="container">
         <HeroSection
           title={capitalize(category.strCategory)}
-          description={category.strCategoryDescription.replaceAll(
+          description={category.strCategoryDescription.replace(
             /(\[\d+\])/g,
             '<sup>$1</sup>'
           )}
