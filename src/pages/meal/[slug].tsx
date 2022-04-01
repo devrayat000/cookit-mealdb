@@ -81,8 +81,8 @@ const MealById: NextPage<MealByIdProps> = ({ meal }) => {
             <p
               dangerouslySetInnerHTML={{
                 __html: meal.strInstructions
-                  .replaceAll('\n', '<br/>')
-                  .replaceAll(/(STEP\s\d+)/gi, '<b>$1</b>'),
+                  .replace(/\n/g, '<br/>')
+                  .replace(/(STEP\s\d+)/gi, '<b>$1</b>'),
               }}
             />
           </section>
