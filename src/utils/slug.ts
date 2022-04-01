@@ -1,11 +1,11 @@
 export function makeSlug(payload: string): string {
   return (
     payload
-      .replaceAll(/([\(\)'"&,])/g, '')
-      // .replaceAll(/(\(|\)|'|"|&|,)/g, '')
-      .replaceAll(/([\s-_]+)/g, '_')
-      // .replaceAll(/(\s|-|_)+/g, "_")
-      .replaceAll(/(?<!\s|_|-)(?!^)([A-Z])/g, '_$1')
+      .replace(/([\(\)'"&,])/g, '')
+      // .replace(/(\(|\)|'|"|&|,)/g, '')
+      .replace(/([\s-_]+)/g, '_')
+      // .replace(/(\s|-|_)+/g, "_")
+      .replace(/(?<!\s|_|-)(?!^)([A-Z])/g, '_$1')
       .toLocaleLowerCase()
   )
 }
