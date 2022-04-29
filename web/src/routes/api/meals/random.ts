@@ -24,6 +24,9 @@ export const get: RequestHandler<Params, Response> = async ({ url }) => {
 		body: {
 			meals: meals.map(parseIngredients)
 		},
-		status: 200
+		status: 200,
+		headers: {
+			'Cache-Control': `max-age=${60 * 60}`
+		}
 	};
 };

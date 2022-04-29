@@ -10,7 +10,7 @@ part of 'local.dart';
 
 class _LocalApi implements LocalApi {
   _LocalApi(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://localhost:3000/api/';
+    baseUrl ??= 'http://10.0.2.2:3000/api/';
   }
 
   final Dio _dio;
@@ -34,11 +34,12 @@ class _LocalApi implements LocalApi {
   }
 
   @override
-  Future<MealsResponse> getRandomMeals(limit) async {
+  Future<MealsResponse> getRandomMeals([limit]) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit};
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'cache-control': 'max-age=3600'};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<MealsResponse>(
