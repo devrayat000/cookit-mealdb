@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  svg:focus {
+    outline: none;
+  }
+
+  html,
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @apply max-w-none bg-gray-50 prose scroll-smooth 
+    prose-h1:text-3xl md:prose-h1:text-4xl 
+    prose-h2:text-xl md:prose-h2:text-2xl
+    prose-h3:text-base md:prose-h3:text-xl
+    prose-h4:text-sm md:prose-h4:text-base
+    prose-li:my-1
+    prose-ul:pl-0
+    prose-p:text-justify
+    prose-img:my-0;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  sub, sup {
+    font-size: 60%;
+  }
+
+  *[contenteditable] {
+    @apply focus:outline-none focus-visible:outline-none;
+  }
+}
+
+#nprogress .spinner {
+  @apply inset-1/2;
+}
+
+#nprogress .overlay {
+  @apply absolute inset-0 bg-black/30 z-50;
+}
+
+#nprogress .spinner-icon {
+  @apply w-12 h-12;
+}
