@@ -6,13 +6,13 @@ import { getRandomMeals } from '$lib/utils/random_meals';
 import type { RequestHandler } from '@sveltejs/kit';
 import type { JSONObject } from '@sveltejs/kit/types/private';
 import type { IMeal } from '$lib/types/meal';
+import { parseIngredients } from '$lib/utils/parse_ingredients';
 
 interface Params extends Record<string, string> {
 	limit: string;
 }
 
 interface Response extends JSONObject {
-	status: number;
 	meals: IMeal[];
 }
 
@@ -22,8 +22,7 @@ export const get: RequestHandler<Params, Response> = async ({ url }) => {
 
 	return {
 		body: {
-			status: 200,
-			meals
+			meals: meals.map(parseIngredients)
 		},
 		status: 200
 	};

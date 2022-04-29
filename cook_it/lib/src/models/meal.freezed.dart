@@ -161,7 +161,7 @@ class _$_MealBase implements _MealBase {
   }
 }
 
-abstract class _MealBase implements MealBase, IMealBase {
+abstract class _MealBase implements MealBase {
   const factory _MealBase(
       {required final String idMeal,
       required final String? strMealThumb,
@@ -181,228 +181,141 @@ abstract class _MealBase implements MealBase, IMealBase {
       throw _privateConstructorUsedError;
 }
 
-MealFromCategory _$MealFromCategoryFromJson(Map<String, dynamic> json) {
-  return _MealFromCategory.fromJson(json);
+MealBaseResponse _$MealBaseResponseFromJson(Map<String, dynamic> json) {
+  return _MealBaseResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MealFromCategory {
-  String get idMeal => throw _privateConstructorUsedError;
-  String? get strMealThumb => throw _privateConstructorUsedError;
-  String get strMeal => throw _privateConstructorUsedError;
-  String? get strCategory => throw _privateConstructorUsedError;
-  String? get strYoutube => throw _privateConstructorUsedError;
+mixin _$MealBaseResponse {
+  List<MealBase> get meals => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MealFromCategoryCopyWith<MealFromCategory> get copyWith =>
+  $MealBaseResponseCopyWith<MealBaseResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MealFromCategoryCopyWith<$Res> {
-  factory $MealFromCategoryCopyWith(
-          MealFromCategory value, $Res Function(MealFromCategory) then) =
-      _$MealFromCategoryCopyWithImpl<$Res>;
-  $Res call(
-      {String idMeal,
-      String? strMealThumb,
-      String strMeal,
-      String? strCategory,
-      String? strYoutube});
+abstract class $MealBaseResponseCopyWith<$Res> {
+  factory $MealBaseResponseCopyWith(
+          MealBaseResponse value, $Res Function(MealBaseResponse) then) =
+      _$MealBaseResponseCopyWithImpl<$Res>;
+  $Res call({List<MealBase> meals});
 }
 
 /// @nodoc
-class _$MealFromCategoryCopyWithImpl<$Res>
-    implements $MealFromCategoryCopyWith<$Res> {
-  _$MealFromCategoryCopyWithImpl(this._value, this._then);
+class _$MealBaseResponseCopyWithImpl<$Res>
+    implements $MealBaseResponseCopyWith<$Res> {
+  _$MealBaseResponseCopyWithImpl(this._value, this._then);
 
-  final MealFromCategory _value;
+  final MealBaseResponse _value;
   // ignore: unused_field
-  final $Res Function(MealFromCategory) _then;
+  final $Res Function(MealBaseResponse) _then;
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
-    Object? strCategory = freezed,
-    Object? strYoutube = freezed,
+    Object? meals = freezed,
   }) {
     return _then(_value.copyWith(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
-              as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
-              as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
-              as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
-              as String?,
-      strYoutube: strYoutube == freezed
-          ? _value.strYoutube
-          : strYoutube // ignore: cast_nullable_to_non_nullable
-              as String?,
+      meals: meals == freezed
+          ? _value.meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<MealBase>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$MealFromCategoryCopyWith<$Res>
-    implements $MealFromCategoryCopyWith<$Res> {
-  factory _$MealFromCategoryCopyWith(
-          _MealFromCategory value, $Res Function(_MealFromCategory) then) =
-      __$MealFromCategoryCopyWithImpl<$Res>;
+abstract class _$MealBaseResponseCopyWith<$Res>
+    implements $MealBaseResponseCopyWith<$Res> {
+  factory _$MealBaseResponseCopyWith(
+          _MealBaseResponse value, $Res Function(_MealBaseResponse) then) =
+      __$MealBaseResponseCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String idMeal,
-      String? strMealThumb,
-      String strMeal,
-      String? strCategory,
-      String? strYoutube});
+  $Res call({List<MealBase> meals});
 }
 
 /// @nodoc
-class __$MealFromCategoryCopyWithImpl<$Res>
-    extends _$MealFromCategoryCopyWithImpl<$Res>
-    implements _$MealFromCategoryCopyWith<$Res> {
-  __$MealFromCategoryCopyWithImpl(
-      _MealFromCategory _value, $Res Function(_MealFromCategory) _then)
-      : super(_value, (v) => _then(v as _MealFromCategory));
+class __$MealBaseResponseCopyWithImpl<$Res>
+    extends _$MealBaseResponseCopyWithImpl<$Res>
+    implements _$MealBaseResponseCopyWith<$Res> {
+  __$MealBaseResponseCopyWithImpl(
+      _MealBaseResponse _value, $Res Function(_MealBaseResponse) _then)
+      : super(_value, (v) => _then(v as _MealBaseResponse));
 
   @override
-  _MealFromCategory get _value => super._value as _MealFromCategory;
+  _MealBaseResponse get _value => super._value as _MealBaseResponse;
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
-    Object? strCategory = freezed,
-    Object? strYoutube = freezed,
+    Object? meals = freezed,
   }) {
-    return _then(_MealFromCategory(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
-              as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
-              as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
-              as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
-              as String?,
-      strYoutube: strYoutube == freezed
-          ? _value.strYoutube
-          : strYoutube // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_MealBaseResponse(
+      meals: meals == freezed
+          ? _value.meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<MealBase>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MealFromCategory implements _MealFromCategory {
-  const _$_MealFromCategory(
-      {required this.idMeal,
-      required this.strMealThumb,
-      required this.strMeal,
-      required this.strCategory,
-      required this.strYoutube});
+class _$_MealBaseResponse implements _MealBaseResponse {
+  const _$_MealBaseResponse({required final List<MealBase> meals})
+      : _meals = meals;
 
-  factory _$_MealFromCategory.fromJson(Map<String, dynamic> json) =>
-      _$$_MealFromCategoryFromJson(json);
+  factory _$_MealBaseResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_MealBaseResponseFromJson(json);
 
+  final List<MealBase> _meals;
   @override
-  final String idMeal;
-  @override
-  final String? strMealThumb;
-  @override
-  final String strMeal;
-  @override
-  final String? strCategory;
-  @override
-  final String? strYoutube;
+  List<MealBase> get meals {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meals);
+  }
 
   @override
   String toString() {
-    return 'MealFromCategory(idMeal: $idMeal, strMealThumb: $strMealThumb, strMeal: $strMeal, strCategory: $strCategory, strYoutube: $strYoutube)';
+    return 'MealBaseResponse(meals: $meals)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MealFromCategory &&
-            const DeepCollectionEquality().equals(other.idMeal, idMeal) &&
-            const DeepCollectionEquality()
-                .equals(other.strMealThumb, strMealThumb) &&
-            const DeepCollectionEquality().equals(other.strMeal, strMeal) &&
-            const DeepCollectionEquality()
-                .equals(other.strCategory, strCategory) &&
-            const DeepCollectionEquality()
-                .equals(other.strYoutube, strYoutube));
+            other is _MealBaseResponse &&
+            const DeepCollectionEquality().equals(other.meals, meals));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(idMeal),
-      const DeepCollectionEquality().hash(strMealThumb),
-      const DeepCollectionEquality().hash(strMeal),
-      const DeepCollectionEquality().hash(strCategory),
-      const DeepCollectionEquality().hash(strYoutube));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(meals));
 
   @JsonKey(ignore: true)
   @override
-  _$MealFromCategoryCopyWith<_MealFromCategory> get copyWith =>
-      __$MealFromCategoryCopyWithImpl<_MealFromCategory>(this, _$identity);
+  _$MealBaseResponseCopyWith<_MealBaseResponse> get copyWith =>
+      __$MealBaseResponseCopyWithImpl<_MealBaseResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MealFromCategoryToJson(this);
+    return _$$_MealBaseResponseToJson(this);
   }
 }
 
-abstract class _MealFromCategory
-    implements MealFromCategory, IMealFromCategory {
-  const factory _MealFromCategory(
-      {required final String idMeal,
-      required final String? strMealThumb,
-      required final String strMeal,
-      required final String? strCategory,
-      required final String? strYoutube}) = _$_MealFromCategory;
+abstract class _MealBaseResponse implements MealBaseResponse {
+  const factory _MealBaseResponse({required final List<MealBase> meals}) =
+      _$_MealBaseResponse;
 
-  factory _MealFromCategory.fromJson(Map<String, dynamic> json) =
-      _$_MealFromCategory.fromJson;
+  factory _MealBaseResponse.fromJson(Map<String, dynamic> json) =
+      _$_MealBaseResponse.fromJson;
 
   @override
-  String get idMeal => throw _privateConstructorUsedError;
-  @override
-  String? get strMealThumb => throw _privateConstructorUsedError;
-  @override
-  String get strMeal => throw _privateConstructorUsedError;
-  @override
-  String? get strCategory => throw _privateConstructorUsedError;
-  @override
-  String? get strYoutube => throw _privateConstructorUsedError;
+  List<MealBase> get meals => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MealFromCategoryCopyWith<_MealFromCategory> get copyWith =>
+  _$MealBaseResponseCopyWith<_MealBaseResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -731,7 +644,7 @@ class _$_Meal implements _Meal {
   }
 }
 
-abstract class _Meal implements Meal, IMeal {
+abstract class _Meal implements Meal {
   const factory _Meal(
       {required final String idMeal,
       required final String? strMealThumb,
@@ -775,6 +688,285 @@ abstract class _Meal implements Meal, IMeal {
   @override
   @JsonKey(ignore: true)
   _$MealCopyWith<_Meal> get copyWith => throw _privateConstructorUsedError;
+}
+
+MealResponse _$MealResponseFromJson(Map<String, dynamic> json) {
+  return _MealResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MealResponse {
+  Meal get meal => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MealResponseCopyWith<MealResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MealResponseCopyWith<$Res> {
+  factory $MealResponseCopyWith(
+          MealResponse value, $Res Function(MealResponse) then) =
+      _$MealResponseCopyWithImpl<$Res>;
+  $Res call({Meal meal});
+
+  $MealCopyWith<$Res> get meal;
+}
+
+/// @nodoc
+class _$MealResponseCopyWithImpl<$Res> implements $MealResponseCopyWith<$Res> {
+  _$MealResponseCopyWithImpl(this._value, this._then);
+
+  final MealResponse _value;
+  // ignore: unused_field
+  final $Res Function(MealResponse) _then;
+
+  @override
+  $Res call({
+    Object? meal = freezed,
+  }) {
+    return _then(_value.copyWith(
+      meal: meal == freezed
+          ? _value.meal
+          : meal // ignore: cast_nullable_to_non_nullable
+              as Meal,
+    ));
+  }
+
+  @override
+  $MealCopyWith<$Res> get meal {
+    return $MealCopyWith<$Res>(_value.meal, (value) {
+      return _then(_value.copyWith(meal: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$MealResponseCopyWith<$Res>
+    implements $MealResponseCopyWith<$Res> {
+  factory _$MealResponseCopyWith(
+          _MealResponse value, $Res Function(_MealResponse) then) =
+      __$MealResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({Meal meal});
+
+  @override
+  $MealCopyWith<$Res> get meal;
+}
+
+/// @nodoc
+class __$MealResponseCopyWithImpl<$Res> extends _$MealResponseCopyWithImpl<$Res>
+    implements _$MealResponseCopyWith<$Res> {
+  __$MealResponseCopyWithImpl(
+      _MealResponse _value, $Res Function(_MealResponse) _then)
+      : super(_value, (v) => _then(v as _MealResponse));
+
+  @override
+  _MealResponse get _value => super._value as _MealResponse;
+
+  @override
+  $Res call({
+    Object? meal = freezed,
+  }) {
+    return _then(_MealResponse(
+      meal: meal == freezed
+          ? _value.meal
+          : meal // ignore: cast_nullable_to_non_nullable
+              as Meal,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_MealResponse implements _MealResponse {
+  const _$_MealResponse({required this.meal});
+
+  factory _$_MealResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_MealResponseFromJson(json);
+
+  @override
+  final Meal meal;
+
+  @override
+  String toString() {
+    return 'MealResponse(meal: $meal)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MealResponse &&
+            const DeepCollectionEquality().equals(other.meal, meal));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(meal));
+
+  @JsonKey(ignore: true)
+  @override
+  _$MealResponseCopyWith<_MealResponse> get copyWith =>
+      __$MealResponseCopyWithImpl<_MealResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MealResponseToJson(this);
+  }
+}
+
+abstract class _MealResponse implements MealResponse {
+  const factory _MealResponse({required final Meal meal}) = _$_MealResponse;
+
+  factory _MealResponse.fromJson(Map<String, dynamic> json) =
+      _$_MealResponse.fromJson;
+
+  @override
+  Meal get meal => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$MealResponseCopyWith<_MealResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MealsResponse _$MealsResponseFromJson(Map<String, dynamic> json) {
+  return _MealsResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MealsResponse {
+  List<Meal> get meals => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MealsResponseCopyWith<MealsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MealsResponseCopyWith<$Res> {
+  factory $MealsResponseCopyWith(
+          MealsResponse value, $Res Function(MealsResponse) then) =
+      _$MealsResponseCopyWithImpl<$Res>;
+  $Res call({List<Meal> meals});
+}
+
+/// @nodoc
+class _$MealsResponseCopyWithImpl<$Res>
+    implements $MealsResponseCopyWith<$Res> {
+  _$MealsResponseCopyWithImpl(this._value, this._then);
+
+  final MealsResponse _value;
+  // ignore: unused_field
+  final $Res Function(MealsResponse) _then;
+
+  @override
+  $Res call({
+    Object? meals = freezed,
+  }) {
+    return _then(_value.copyWith(
+      meals: meals == freezed
+          ? _value.meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$MealsResponseCopyWith<$Res>
+    implements $MealsResponseCopyWith<$Res> {
+  factory _$MealsResponseCopyWith(
+          _MealsResponse value, $Res Function(_MealsResponse) then) =
+      __$MealsResponseCopyWithImpl<$Res>;
+  @override
+  $Res call({List<Meal> meals});
+}
+
+/// @nodoc
+class __$MealsResponseCopyWithImpl<$Res>
+    extends _$MealsResponseCopyWithImpl<$Res>
+    implements _$MealsResponseCopyWith<$Res> {
+  __$MealsResponseCopyWithImpl(
+      _MealsResponse _value, $Res Function(_MealsResponse) _then)
+      : super(_value, (v) => _then(v as _MealsResponse));
+
+  @override
+  _MealsResponse get _value => super._value as _MealsResponse;
+
+  @override
+  $Res call({
+    Object? meals = freezed,
+  }) {
+    return _then(_MealsResponse(
+      meals: meals == freezed
+          ? _value.meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_MealsResponse implements _MealsResponse {
+  const _$_MealsResponse({required final List<Meal> meals}) : _meals = meals;
+
+  factory _$_MealsResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_MealsResponseFromJson(json);
+
+  final List<Meal> _meals;
+  @override
+  List<Meal> get meals {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meals);
+  }
+
+  @override
+  String toString() {
+    return 'MealsResponse(meals: $meals)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MealsResponse &&
+            const DeepCollectionEquality().equals(other.meals, meals));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(meals));
+
+  @JsonKey(ignore: true)
+  @override
+  _$MealsResponseCopyWith<_MealsResponse> get copyWith =>
+      __$MealsResponseCopyWithImpl<_MealsResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MealsResponseToJson(this);
+  }
+}
+
+abstract class _MealsResponse implements MealsResponse {
+  const factory _MealsResponse({required final List<Meal> meals}) =
+      _$_MealsResponse;
+
+  factory _MealsResponse.fromJson(Map<String, dynamic> json) =
+      _$_MealsResponse.fromJson;
+
+  @override
+  List<Meal> get meals => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$MealsResponseCopyWith<_MealsResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
