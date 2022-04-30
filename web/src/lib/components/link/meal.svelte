@@ -6,6 +6,6 @@
 	const href = mealLink(meal.title, meal.id);
 </script>
 
-<a {href} title={meal.title} sveltekit:noscroll {...$$restProps}>
+<a {href} title={meal.title} {...$$restProps}>
 	<slot />
 </a>

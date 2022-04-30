@@ -3,6 +3,7 @@
  */
  module.exports = {
   content: ['src/**/*.{html,svelte}'],
+  safelist: ['nprogress-busy'],
   theme: {
     extend: {
       zIndex: {
