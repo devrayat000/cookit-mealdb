@@ -39,7 +39,7 @@ class Meal with _$Meal {
     required List<Ingredient> ingredients,
     required String? strArea,
     required String? strImageSource,
-    required String strInstructions,
+    required String? strInstructions,
     required String? strSource,
     required String? strTags,
   }) = _Meal;

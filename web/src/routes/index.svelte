@@ -1,23 +1,18 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	// import {} from '@sveltestack/svelte-query'
-	import { getRandomMeals } from '$lib/utils/random_meals';
-	import { makeUrl } from '$lib/utils/axios';
-	// import createQueryClient from '$lib/utils/query';
 
 	// export const prerender = true;
 
-	export const load: Load = async ({}) => {
-		// const queryClient = createQueryClient();
-		const { meals } = await getRandomMeals();
-		// const { meals } = await queryClient.fetchQuery('random', getRandomMeals);
+	export const load: Load = async ({ fetch }) => {
+		const res = await fetch('/api/meal/random');
+		const { meals } = await res.json();
+		console.log(meals);
 
 		return {
 			props: {
 				meals
-				// meals: meals.map(parseIngredients)
 			},
-			dependencies: [makeUrl('random.php')],
+			dependencies: ['/api/meal/random'],
 			cache: {
 				maxage: 60 * 60 // 1 hour
 			}

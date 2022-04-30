@@ -334,7 +334,7 @@ mixin _$Meal {
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   String? get strArea => throw _privateConstructorUsedError;
   String? get strImageSource => throw _privateConstructorUsedError;
-  String get strInstructions => throw _privateConstructorUsedError;
+  String? get strInstructions => throw _privateConstructorUsedError;
   String? get strSource => throw _privateConstructorUsedError;
   String? get strTags => throw _privateConstructorUsedError;
 
@@ -357,7 +357,7 @@ abstract class $MealCopyWith<$Res> {
       List<Ingredient> ingredients,
       String? strArea,
       String? strImageSource,
-      String strInstructions,
+      String? strInstructions,
       String? strSource,
       String? strTags});
 }
@@ -425,7 +425,7 @@ class _$MealCopyWithImpl<$Res> implements $MealCopyWith<$Res> {
       strInstructions: strInstructions == freezed
           ? _value.strInstructions
           : strInstructions // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       strSource: strSource == freezed
           ? _value.strSource
           : strSource // ignore: cast_nullable_to_non_nullable
@@ -453,7 +453,7 @@ abstract class _$MealCopyWith<$Res> implements $MealCopyWith<$Res> {
       List<Ingredient> ingredients,
       String? strArea,
       String? strImageSource,
-      String strInstructions,
+      String? strInstructions,
       String? strSource,
       String? strTags});
 }
@@ -522,7 +522,7 @@ class __$MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res>
       strInstructions: strInstructions == freezed
           ? _value.strInstructions
           : strInstructions // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       strSource: strSource == freezed
           ? _value.strSource
           : strSource // ignore: cast_nullable_to_non_nullable
@@ -579,7 +579,7 @@ class _$_Meal implements _Meal {
   @override
   final String? strImageSource;
   @override
-  final String strInstructions;
+  final String? strInstructions;
   @override
   final String? strSource;
   @override
@@ -655,7 +655,7 @@ abstract class _Meal implements Meal {
       required final List<Ingredient> ingredients,
       required final String? strArea,
       required final String? strImageSource,
-      required final String strInstructions,
+      required final String? strInstructions,
       required final String? strSource,
       required final String? strTags}) = _$_Meal;
 
@@ -680,7 +680,7 @@ abstract class _Meal implements Meal {
   @override
   String? get strImageSource => throw _privateConstructorUsedError;
   @override
-  String get strInstructions => throw _privateConstructorUsedError;
+  String? get strInstructions => throw _privateConstructorUsedError;
   @override
   String? get strSource => throw _privateConstructorUsedError;
   @override

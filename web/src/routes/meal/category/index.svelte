@@ -1,23 +1,20 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	import createQueryClient from '$lib/utils/query';
-	import { getCategories } from '$lib/services/category';
-	import { makeUrl } from '$lib/utils/axios';
 
 	// export const prerender = true;
 
-	export const load: Load = async () => {
-		const queryClient = createQueryClient();
-		const { data } = await queryClient.fetchQuery('category', getCategories);
+	export const load: Load = async ({ fetch }) => {
+		const res = await fetch('/api/meal/category');
+		const { categories } = await res.json();
 
 		return {
 			props: {
-				categories: data['categories']
+				categories
 			},
 			cache: {
 				maxage: 60 * 60 * 24 // 1 day
 			},
-			dependencies: [makeUrl('categories.php')]
+			dependencies: ['/api/meal/category']
 		};
 	};
 </script>
@@ -64,7 +61,7 @@
 		{/key}
 
 		<article class="flex justify-center items-stretch flex-wrap gap-3 container">
-			{#each categories as category (category.idCategory)}
+			{#each categories as category (category.id)}
 				<CategoryCard {category} />
 			{/each}
 		</article>

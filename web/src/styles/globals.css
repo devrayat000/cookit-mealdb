@@ -48,7 +48,7 @@
 }
 
 #nprogress .overlay {
-  @apply absolute inset-0 bg-black/30 z-50;
+  @apply fixed inset-0 bg-black/30 z-50 pointer-events-none;
 }
 
 #nprogress .spinner-icon {

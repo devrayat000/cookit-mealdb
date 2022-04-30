@@ -1,12 +1,14 @@
 import { mealdb } from './axios';
-import type { ICategory } from '$lib/types/category';
+import { parseCategory } from './parsers';
 
-export async function categoryBySlug(slug: string): Promise<ICategory> {
-	const res = await mealdb.get<{ categories: ICategory[] }>('/categories.php');
+export async function categoryBySlug(slug: string) {
+	const res = await mealdb.get('/categories.php');
 
 	const selectedCategory = res.data.categories.find(
-		(c) => c.strCategory.toLowerCase() === slug.toLowerCase()
+		(c: any) => c.strCategory.toLowerCase() === slug.toLowerCase()
 	);
 
-	return selectedCategory!;
+	if (selectedCategory) {
+		return parseCategory(selectedCategory);
+	}
 }

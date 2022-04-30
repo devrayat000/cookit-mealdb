@@ -5,7 +5,7 @@
 	// import createQueryClient from '$lib/utils/query';
 	// import { getMealsByCategory } from '$lib/services/category';
 	import { mealdb } from '$lib/utils/axios';
-	import { parseIngredients } from '$lib/utils/parse_ingredients';
+	import { parseMeal } from '$lib/utils/parsers';
 
 	export const prerender = false;
 
@@ -52,7 +52,7 @@
 
 		return {
 			props: {
-				meals: data.meals.map(parseIngredients)
+				meals: data.meals.map(parseMeal)
 			},
 			cache: {
 				maxage: 60 * 60 * 24 // 1 day
@@ -68,7 +68,7 @@
 </script>
 
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	// import { MetaTags } from 'svelte-meta-tags';
 	import { page } from '$app/stores';
 
 	import Meals from '$lib/components/list/meals.svelte';

@@ -1,32 +1,20 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 
-	import { parseIngredients } from '$lib/utils/parse_ingredients';
-	import createQueryClient from '$lib/utils/query';
-	import { getMealById } from '$lib/services/meal';
-	import { makeUrl } from '$lib/utils/axios';
-
 	// export const prerender = true;
 
-	export const load: Load<StaticPath> = async ({ params }) => {
+	export const load: Load<StaticPath> = async ({ params, fetch }) => {
 		const id = params.id;
 		console.log('id:', id);
 
-		const queryClient = createQueryClient();
-		const res = await queryClient.fetchQuery(['meal', id], getMealById);
-
-		if ((res.status >= 400 && res.status < 500) || !res.data.meals) {
-			return {
-				error: new Error(`Meal with id ${id} not found!`),
-				status: 404
-			};
-		}
+		const res = await fetch(`/api/meal/${id}`);
+		const { meal } = await res.json();
 
 		return {
 			props: {
-				meal: parseIngredients(res.data.meals[0])
+				meal
 			},
-			dependencies: [makeUrl('lookup.php', { i: id })],
+			dependencies: [`/api/meal/${id}`],
 			cache: {
 				maxage: 60 * 60 * 24 // 1 day
 			}
@@ -54,53 +42,53 @@
 
 	export let meal: IMeal;
 
-	let instructions = meal.strInstructions
+	let instructions = meal.instructions
 		.replace(/\n/g, '<br/>')
 		.replace(/(STEP\s\d+)/gi, '<b>$1</b>');
 </script>
 
 <main class="m-4">
 	<MetaTags
-		title={`${meal.strMeal} | COOKit`}
-		description={meal.strInstructions}
+		title={`${meal.title} | COOKit`}
+		description={meal.instructions}
 		additionalLinkTags={[{ rel: 'icon', href: '/images/garnish.png' }]}
 		openGraph={{
-			title: `${meal.strMeal} | COOKit`,
-			description: meal.strInstructions,
-			url: mealLink(meal.strMeal, meal.idMeal, 'https://cookit-bay.vercel.app'),
+			title: `${meal.title} | COOKit`,
+			description: meal.instructions,
+			url: mealLink(meal.title, meal.id, 'https://cookit-bay.vercel.app'),
 			images: [
 				{
-					url: meal.strMealThumb ?? '/demos/intro.png',
-					alt: `${meal.strMeal} | COOKit`
+					url: meal.thumb ?? '/demos/intro.png',
+					alt: `${meal.title} | COOKit`
 				}
 			]
 		}}
 	/>
 	<section aria-labelledby="meal-name" class="container mx-auto">
 		<h1 id="meal-name" class="text-center">
-			{meal.strMeal}
+			{meal.title}
 		</h1>
 
 		<section class="flex justify-between items-start mb-8">
 			<div class="flex-1 lg:flex-2 prose-h3:m-0">
-				{#if meal.strCategory}
+				{#if meal.category}
 					<Info title="Category">
-						<CategoryLink category={meal.strCategory} class="link link-hover">
-							<h3>{meal.strCategory}</h3>
+						<CategoryLink category={meal.category} class="link link-hover">
+							<h3>{meal.category}</h3>
 						</CategoryLink>
 					</Info>
 				{/if}
-				{#if meal.strArea}
+				{#if meal.area}
 					<Info title="Area">
-						<h3>{meal.strArea}</h3>
+						<h3>{meal.area}</h3>
 					</Info>
 				{/if}
-				{#if meal.strTags}
-					<Breadcrumb tags={meal.strTags.split(',')} />
+				{#if meal.tags}
+					<Breadcrumb tags={meal.tags.split(',')} />
 				{/if}
-				{#if meal.strSource}
+				{#if meal.source}
 					<a
-						href={meal.strSource}
+						href={meal.source}
 						target="_blank"
 						rel="noreferrer noopener"
 						class="btn btn-secondary rounded-md"
@@ -109,11 +97,11 @@
 					</a>
 				{/if}
 			</div>
-			{#if meal.strMealThumb}
+			{#if meal.thumb}
 				<div class="relative flex-1 aspect-square min-w-min">
 					<Image
-						src={meal.strMealThumb}
-						alt={meal.strMeal}
+						src={meal.thumb}
+						alt={meal.title}
 						object-fit="contain"
 						object-position="right top"
 						sizes="100vw"
@@ -124,8 +112,8 @@
 		</section>
 
 		<article class="">
-			{#if meal.strYoutube}
-				<Youtube title={meal.strMeal} url={meal.strYoutube} />
+			{#if meal.youtube}
+				<Youtube title={meal.title} url={meal.youtube} />
 			{/if}
 			<section class="">
 				<h2 class="text-center">Ingredients</h2>

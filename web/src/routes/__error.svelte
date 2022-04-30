@@ -13,9 +13,7 @@
 
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-	import { page, navigating } from '$app/stores';
+	import { navigating } from '$app/stores';
 
 	const goSomeWhereBack = () => {
 		goto($navigating?.from.pathname ?? '/');

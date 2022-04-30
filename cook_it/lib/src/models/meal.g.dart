@@ -45,7 +45,7 @@ _$_Meal _$$_MealFromJson(Map<String, dynamic> json) => _$_Meal(
           .toList(),
       strArea: json['strArea'] as String?,
       strImageSource: json['strImageSource'] as String?,
-      strInstructions: json['strInstructions'] as String,
+      strInstructions: json['strInstructions'] as String?,
       strSource: json['strSource'] as String?,
       strTags: json['strTags'] as String?,
     );

@@ -14,7 +14,7 @@
 </script>
 
 <article class={`flex justify-center items-stretch flex-wrap gap-3 container mb-8 ${clazz}`.trim()}>
-	{#each meals as meal (meal['idMeal'])}
+	{#each meals as meal (meal['id'])}
 		<MealCard {meal} />
 	{/each}
 </article>

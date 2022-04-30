@@ -17,17 +17,17 @@
 	{meal}
 	class="p-0.5 shadow-md hover:shadow-lg w-80 rounded card bg-base-100 prose-h3:my-0"
 >
-	<Image src={meal.strMealThumb} alt={meal.strMeal} class="image-full" width={320} height={320} />
+	<Image src={meal.thumb} alt={meal.title} class="image-full" width={320} height={320} />
 	<div role="contentinfo" class="p-2 card-body">
 		<h2 class="text-ellipsis line-clamp-1 mt-4 mb-1 md:mb-2">
-			{meal['strMeal']}
+			{meal.title}
 		</h2>
-		{#if !!meal.strCategory}
+		{#if !!meal.category}
 			<div role="complementary" class="flex justify-between items-center mb-2">
-				<h3>{meal.strCategory}</h3>
-				{#if !!meal.strYoutube}
+				<h3>{meal.category}</h3>
+				{#if !!meal.youtube}
 					<a
-						href={meal.strYoutube}
+						href={meal.youtube}
 						target="_blank"
 						rel="noreferrer noopener"
 						class="flex text-red-600 text-3xl"

@@ -1,27 +1,27 @@
 import type { JSONObject } from '@sveltejs/kit/types/private';
 import { Maybe } from 'types';
 
-export interface IMealBase {
-	idMeal: string;
-	strMealThumb: Maybe<string>;
-	strMeal: string;
+export interface IMealBase extends JSONObject {
+	id: string;
+	thumb: Maybe<string>;
+	title: string;
 }
 
 export interface IMealFromCategory extends IMealBase {
-	strCategory?: Maybe<string>;
-	strYoutube?: Maybe<string>;
+	category?: Maybe<string>;
+	youtube?: Maybe<string>;
 }
 
-export interface IMeal extends IMealFromCategory, JSONObject {
+export interface IMeal extends IMealFromCategory {
 	dateModified: Maybe<string>;
 	ingredients: Ingredient[];
-	strArea: Maybe<string>;
-	strCreativeCommonsConfirmed: Maybe<string>;
-	strDrinkAlternate: Maybe<string>;
-	strImageSource: Maybe<string>;
-	strInstructions: string;
-	strSource: Maybe<string>;
-	strTags: Maybe<string>;
+	area: Maybe<string>;
+	creativeCommonsConfirmed: Maybe<string>;
+	drinkAlternate: Maybe<string>;
+	imageSource: Maybe<string>;
+	instructions: string;
+	source: Maybe<string>;
+	tags: Maybe<string>;
 }
 
 export interface Ingredient extends JSONObject {

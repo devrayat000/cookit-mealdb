@@ -27,17 +27,17 @@ export const get: RequestHandler = async () => {
 
 	meals.forEach((meal) => {
 		feed.addItem({
-			id: meal.idMeal,
-			title: meal.strMeal,
+			id: meal.id,
+			title: meal.title,
 			category: [
 				{
-					name: meal.strCategory
+					name: meal.category
 				}
 			],
-			description: meal.strInstructions,
-			image: meal.strMealThumb,
-			video: meal.strYoutube,
-			link: mealLink(meal.strMeal, meal.idMeal, BASE_URL),
+			description: meal.instructions,
+			image: meal.thumb,
+			video: meal.youtube,
+			link: mealLink(meal.title, meal.id, BASE_URL),
 			date: new Date(meal.dateModified)
 		});
 	});

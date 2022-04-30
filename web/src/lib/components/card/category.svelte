@@ -8,19 +8,15 @@
 </script>
 
 <CategoryLink
-	key={category.idCategory}
-	category={category.strCategory}
+	key={category.id}
+	category={category.name}
 	class="card card-compact shadow-md p-2 bg-base-100 hover:shadow-lg transition-shadow flex justify-end relative aspect-square w-80"
 >
-	<Image
-		src={category.strCategoryThumb}
-		alt={`Category - ${category.strCategory}`}
-		object-position="center top"
-	/>
+	<Image src={category.thumb} alt={`Category - ${category.name}`} object-position="center top" />
 	<div role="contentinfo" class="card-body absolute bottom-0">
-		<h2 class="mb-2">{category.strCategory}</h2>
+		<h2 class="mb-2">{category.name}</h2>
 		<p role="definition" class="mb-0 line-clamp-3">
-			{@html category.strCategoryDescription}
+			{@html category.description}
 		</p>
 	</div>
 </CategoryLink>
