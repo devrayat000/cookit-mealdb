@@ -7,18 +7,18 @@ part of 'category.dart';
 // **************************************************************************
 
 _$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
-      idCategory: json['idCategory'] as String,
-      strCategory: json['strCategory'] as String,
-      strCategoryThumb: json['strCategoryThumb'] as String,
-      strCategoryDescription: json['strCategoryDescription'] as String,
+      id: json['id'] as String,
+      name: json['name'] as String,
+      thumb: json['thumb'] as String,
+      description: json['description'] as String,
     );
 
 Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
     <String, dynamic>{
-      'idCategory': instance.idCategory,
-      'strCategory': instance.strCategory,
-      'strCategoryThumb': instance.strCategoryThumb,
-      'strCategoryDescription': instance.strCategoryDescription,
+      'id': instance.id,
+      'name': instance.name,
+      'thumb': instance.thumb,
+      'description': instance.description,
     };
 
 _$_CategoriesResponse _$$_CategoriesResponseFromJson(

@@ -49,3 +49,8 @@
 		</div>
 	</div>
 </section>
+
+<style lang="postcss">
+	@tailwind components;
+	@tailwind utilities;
+</style>

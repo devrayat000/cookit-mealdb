@@ -18,22 +18,6 @@ class _RemoteApi implements RemoteApi {
   String? baseUrl;
 
   @override
-  Future<CategoriesResponse> getCategories() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CategoriesResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/categories.php',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CategoriesResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<MealBaseResponse> _filterMeals({category, area, ingredient}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

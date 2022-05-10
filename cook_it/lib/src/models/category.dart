@@ -11,7 +11,7 @@ part 'category.freezed.dart';
 class CategoryBase with _$CategoryBase {
   // @With<ICategoryBase>()
   const factory CategoryBase({
-    required String strCategory,
+    required String name,
   }) = _CategoryBase;
 }
 
@@ -25,10 +25,10 @@ class CategoryBase with _$CategoryBase {
 class Category with _$Category {
   // @With<ICategory>()
   const factory Category({
-    required String idCategory,
-    required String strCategory,
-    required String strCategoryThumb,
-    required String strCategoryDescription,
+    required String id,
+    required String name,
+    required String thumb,
+    required String description,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>

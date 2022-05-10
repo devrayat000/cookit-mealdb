@@ -9,9 +9,6 @@ part 'remote.g.dart';
 abstract class RemoteApi {
   factory RemoteApi(Dio dio, {String baseUrl}) = _RemoteApi;
 
-  @GET('/categories.php')
-  Future<CategoriesResponse> getCategories();
-
   @GET('/filter.php')
   Future<MealBaseResponse> _filterMeals({
     @Query('c') final String? category,

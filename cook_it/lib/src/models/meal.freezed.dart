@@ -20,9 +20,9 @@ MealBase _$MealBaseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MealBase {
-  String get idMeal => throw _privateConstructorUsedError;
-  String? get strMealThumb => throw _privateConstructorUsedError;
-  String get strMeal => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String? get thumb => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ mixin _$MealBase {
 abstract class $MealBaseCopyWith<$Res> {
   factory $MealBaseCopyWith(MealBase value, $Res Function(MealBase) then) =
       _$MealBaseCopyWithImpl<$Res>;
-  $Res call({String idMeal, String? strMealThumb, String strMeal});
+  $Res call({String id, String? thumb, String title});
 }
 
 /// @nodoc
@@ -47,22 +47,22 @@ class _$MealBaseCopyWithImpl<$Res> implements $MealBaseCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
+    Object? id = freezed,
+    Object? thumb = freezed,
+    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -73,7 +73,7 @@ abstract class _$MealBaseCopyWith<$Res> implements $MealBaseCopyWith<$Res> {
   factory _$MealBaseCopyWith(_MealBase value, $Res Function(_MealBase) then) =
       __$MealBaseCopyWithImpl<$Res>;
   @override
-  $Res call({String idMeal, String? strMealThumb, String strMeal});
+  $Res call({String id, String? thumb, String title});
 }
 
 /// @nodoc
@@ -87,22 +87,22 @@ class __$MealBaseCopyWithImpl<$Res> extends _$MealBaseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
+    Object? id = freezed,
+    Object? thumb = freezed,
+    Object? title = freezed,
   }) {
     return _then(_MealBase(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -112,23 +112,21 @@ class __$MealBaseCopyWithImpl<$Res> extends _$MealBaseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MealBase implements _MealBase {
   const _$_MealBase(
-      {required this.idMeal,
-      required this.strMealThumb,
-      required this.strMeal});
+      {required this.id, required this.thumb, required this.title});
 
   factory _$_MealBase.fromJson(Map<String, dynamic> json) =>
       _$$_MealBaseFromJson(json);
 
   @override
-  final String idMeal;
+  final String id;
   @override
-  final String? strMealThumb;
+  final String? thumb;
   @override
-  final String strMeal;
+  final String title;
 
   @override
   String toString() {
-    return 'MealBase(idMeal: $idMeal, strMealThumb: $strMealThumb, strMeal: $strMeal)';
+    return 'MealBase(id: $id, thumb: $thumb, title: $title)';
   }
 
   @override
@@ -136,19 +134,18 @@ class _$_MealBase implements _MealBase {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _MealBase &&
-            const DeepCollectionEquality().equals(other.idMeal, idMeal) &&
-            const DeepCollectionEquality()
-                .equals(other.strMealThumb, strMealThumb) &&
-            const DeepCollectionEquality().equals(other.strMeal, strMeal));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.thumb, thumb) &&
+            const DeepCollectionEquality().equals(other.title, title));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(idMeal),
-      const DeepCollectionEquality().hash(strMealThumb),
-      const DeepCollectionEquality().hash(strMeal));
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(thumb),
+      const DeepCollectionEquality().hash(title));
 
   @JsonKey(ignore: true)
   @override
@@ -163,18 +160,18 @@ class _$_MealBase implements _MealBase {
 
 abstract class _MealBase implements MealBase {
   const factory _MealBase(
-      {required final String idMeal,
-      required final String? strMealThumb,
-      required final String strMeal}) = _$_MealBase;
+      {required final String id,
+      required final String? thumb,
+      required final String title}) = _$_MealBase;
 
   factory _MealBase.fromJson(Map<String, dynamic> json) = _$_MealBase.fromJson;
 
   @override
-  String get idMeal => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get strMealThumb => throw _privateConstructorUsedError;
+  String? get thumb => throw _privateConstructorUsedError;
   @override
-  String get strMeal => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MealBaseCopyWith<_MealBase> get copyWith =>
@@ -325,18 +322,18 @@ Meal _$MealFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Meal {
-  String get idMeal => throw _privateConstructorUsedError;
-  String? get strMealThumb => throw _privateConstructorUsedError;
-  String get strMeal => throw _privateConstructorUsedError;
-  String? get strCategory => throw _privateConstructorUsedError;
-  String? get strYoutube => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String? get thumb => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
+  String? get youtube => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
-  String? get strArea => throw _privateConstructorUsedError;
-  String? get strImageSource => throw _privateConstructorUsedError;
-  String? get strInstructions => throw _privateConstructorUsedError;
-  String? get strSource => throw _privateConstructorUsedError;
-  String? get strTags => throw _privateConstructorUsedError;
+  String? get area => throw _privateConstructorUsedError;
+  String? get imageSource => throw _privateConstructorUsedError;
+  String? get instructions => throw _privateConstructorUsedError;
+  String? get source => throw _privateConstructorUsedError;
+  String? get tags => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -348,18 +345,18 @@ abstract class $MealCopyWith<$Res> {
   factory $MealCopyWith(Meal value, $Res Function(Meal) then) =
       _$MealCopyWithImpl<$Res>;
   $Res call(
-      {String idMeal,
-      String? strMealThumb,
-      String strMeal,
-      String? strCategory,
-      String? strYoutube,
+      {String id,
+      String? thumb,
+      String title,
+      String? category,
+      String? youtube,
       DateTime? dateModified,
       List<Ingredient> ingredients,
-      String? strArea,
-      String? strImageSource,
-      String? strInstructions,
-      String? strSource,
-      String? strTags});
+      String? area,
+      String? imageSource,
+      String? instructions,
+      String? source,
+      String? tags});
 }
 
 /// @nodoc
@@ -372,39 +369,39 @@ class _$MealCopyWithImpl<$Res> implements $MealCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
-    Object? strCategory = freezed,
-    Object? strYoutube = freezed,
+    Object? id = freezed,
+    Object? thumb = freezed,
+    Object? title = freezed,
+    Object? category = freezed,
+    Object? youtube = freezed,
     Object? dateModified = freezed,
     Object? ingredients = freezed,
-    Object? strArea = freezed,
-    Object? strImageSource = freezed,
-    Object? strInstructions = freezed,
-    Object? strSource = freezed,
-    Object? strTags = freezed,
+    Object? area = freezed,
+    Object? imageSource = freezed,
+    Object? instructions = freezed,
+    Object? source = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_value.copyWith(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String?,
-      strYoutube: strYoutube == freezed
-          ? _value.strYoutube
-          : strYoutube // ignore: cast_nullable_to_non_nullable
+      youtube: youtube == freezed
+          ? _value.youtube
+          : youtube // ignore: cast_nullable_to_non_nullable
               as String?,
       dateModified: dateModified == freezed
           ? _value.dateModified
@@ -414,25 +411,25 @@ class _$MealCopyWithImpl<$Res> implements $MealCopyWith<$Res> {
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<Ingredient>,
-      strArea: strArea == freezed
-          ? _value.strArea
-          : strArea // ignore: cast_nullable_to_non_nullable
+      area: area == freezed
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
               as String?,
-      strImageSource: strImageSource == freezed
-          ? _value.strImageSource
-          : strImageSource // ignore: cast_nullable_to_non_nullable
+      imageSource: imageSource == freezed
+          ? _value.imageSource
+          : imageSource // ignore: cast_nullable_to_non_nullable
               as String?,
-      strInstructions: strInstructions == freezed
-          ? _value.strInstructions
-          : strInstructions // ignore: cast_nullable_to_non_nullable
+      instructions: instructions == freezed
+          ? _value.instructions
+          : instructions // ignore: cast_nullable_to_non_nullable
               as String?,
-      strSource: strSource == freezed
-          ? _value.strSource
-          : strSource // ignore: cast_nullable_to_non_nullable
+      source: source == freezed
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String?,
-      strTags: strTags == freezed
-          ? _value.strTags
-          : strTags // ignore: cast_nullable_to_non_nullable
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -444,18 +441,18 @@ abstract class _$MealCopyWith<$Res> implements $MealCopyWith<$Res> {
       __$MealCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String idMeal,
-      String? strMealThumb,
-      String strMeal,
-      String? strCategory,
-      String? strYoutube,
+      {String id,
+      String? thumb,
+      String title,
+      String? category,
+      String? youtube,
       DateTime? dateModified,
       List<Ingredient> ingredients,
-      String? strArea,
-      String? strImageSource,
-      String? strInstructions,
-      String? strSource,
-      String? strTags});
+      String? area,
+      String? imageSource,
+      String? instructions,
+      String? source,
+      String? tags});
 }
 
 /// @nodoc
@@ -469,39 +466,39 @@ class __$MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? idMeal = freezed,
-    Object? strMealThumb = freezed,
-    Object? strMeal = freezed,
-    Object? strCategory = freezed,
-    Object? strYoutube = freezed,
+    Object? id = freezed,
+    Object? thumb = freezed,
+    Object? title = freezed,
+    Object? category = freezed,
+    Object? youtube = freezed,
     Object? dateModified = freezed,
     Object? ingredients = freezed,
-    Object? strArea = freezed,
-    Object? strImageSource = freezed,
-    Object? strInstructions = freezed,
-    Object? strSource = freezed,
-    Object? strTags = freezed,
+    Object? area = freezed,
+    Object? imageSource = freezed,
+    Object? instructions = freezed,
+    Object? source = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_Meal(
-      idMeal: idMeal == freezed
-          ? _value.idMeal
-          : idMeal // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strMealThumb: strMealThumb == freezed
-          ? _value.strMealThumb
-          : strMealThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeal: strMeal == freezed
-          ? _value.strMeal
-          : strMeal // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String?,
-      strYoutube: strYoutube == freezed
-          ? _value.strYoutube
-          : strYoutube // ignore: cast_nullable_to_non_nullable
+      youtube: youtube == freezed
+          ? _value.youtube
+          : youtube // ignore: cast_nullable_to_non_nullable
               as String?,
       dateModified: dateModified == freezed
           ? _value.dateModified
@@ -511,25 +508,25 @@ class __$MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res>
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<Ingredient>,
-      strArea: strArea == freezed
-          ? _value.strArea
-          : strArea // ignore: cast_nullable_to_non_nullable
+      area: area == freezed
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
               as String?,
-      strImageSource: strImageSource == freezed
-          ? _value.strImageSource
-          : strImageSource // ignore: cast_nullable_to_non_nullable
+      imageSource: imageSource == freezed
+          ? _value.imageSource
+          : imageSource // ignore: cast_nullable_to_non_nullable
               as String?,
-      strInstructions: strInstructions == freezed
-          ? _value.strInstructions
-          : strInstructions // ignore: cast_nullable_to_non_nullable
+      instructions: instructions == freezed
+          ? _value.instructions
+          : instructions // ignore: cast_nullable_to_non_nullable
               as String?,
-      strSource: strSource == freezed
-          ? _value.strSource
-          : strSource // ignore: cast_nullable_to_non_nullable
+      source: source == freezed
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String?,
-      strTags: strTags == freezed
-          ? _value.strTags
-          : strTags // ignore: cast_nullable_to_non_nullable
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -539,32 +536,32 @@ class __$MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Meal implements _Meal {
   const _$_Meal(
-      {required this.idMeal,
-      required this.strMealThumb,
-      required this.strMeal,
-      required this.strCategory,
-      required this.strYoutube,
+      {required this.id,
+      required this.thumb,
+      required this.title,
+      required this.category,
+      required this.youtube,
       required this.dateModified,
       required final List<Ingredient> ingredients,
-      required this.strArea,
-      required this.strImageSource,
-      required this.strInstructions,
-      required this.strSource,
-      required this.strTags})
+      required this.area,
+      required this.imageSource,
+      required this.instructions,
+      required this.source,
+      required this.tags})
       : _ingredients = ingredients;
 
   factory _$_Meal.fromJson(Map<String, dynamic> json) => _$$_MealFromJson(json);
 
   @override
-  final String idMeal;
+  final String id;
   @override
-  final String? strMealThumb;
+  final String? thumb;
   @override
-  final String strMeal;
+  final String title;
   @override
-  final String? strCategory;
+  final String? category;
   @override
-  final String? strYoutube;
+  final String? youtube;
   @override
   final DateTime? dateModified;
   final List<Ingredient> _ingredients;
@@ -575,19 +572,19 @@ class _$_Meal implements _Meal {
   }
 
   @override
-  final String? strArea;
+  final String? area;
   @override
-  final String? strImageSource;
+  final String? imageSource;
   @override
-  final String? strInstructions;
+  final String? instructions;
   @override
-  final String? strSource;
+  final String? source;
   @override
-  final String? strTags;
+  final String? tags;
 
   @override
   String toString() {
-    return 'Meal(idMeal: $idMeal, strMealThumb: $strMealThumb, strMeal: $strMeal, strCategory: $strCategory, strYoutube: $strYoutube, dateModified: $dateModified, ingredients: $ingredients, strArea: $strArea, strImageSource: $strImageSource, strInstructions: $strInstructions, strSource: $strSource, strTags: $strTags)';
+    return 'Meal(id: $id, thumb: $thumb, title: $title, category: $category, youtube: $youtube, dateModified: $dateModified, ingredients: $ingredients, area: $area, imageSource: $imageSource, instructions: $instructions, source: $source, tags: $tags)';
   }
 
   @override
@@ -595,43 +592,40 @@ class _$_Meal implements _Meal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Meal &&
-            const DeepCollectionEquality().equals(other.idMeal, idMeal) &&
-            const DeepCollectionEquality()
-                .equals(other.strMealThumb, strMealThumb) &&
-            const DeepCollectionEquality().equals(other.strMeal, strMeal) &&
-            const DeepCollectionEquality()
-                .equals(other.strCategory, strCategory) &&
-            const DeepCollectionEquality()
-                .equals(other.strYoutube, strYoutube) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.thumb, thumb) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.youtube, youtube) &&
             const DeepCollectionEquality()
                 .equals(other.dateModified, dateModified) &&
             const DeepCollectionEquality()
                 .equals(other.ingredients, ingredients) &&
-            const DeepCollectionEquality().equals(other.strArea, strArea) &&
+            const DeepCollectionEquality().equals(other.area, area) &&
             const DeepCollectionEquality()
-                .equals(other.strImageSource, strImageSource) &&
+                .equals(other.imageSource, imageSource) &&
             const DeepCollectionEquality()
-                .equals(other.strInstructions, strInstructions) &&
-            const DeepCollectionEquality().equals(other.strSource, strSource) &&
-            const DeepCollectionEquality().equals(other.strTags, strTags));
+                .equals(other.instructions, instructions) &&
+            const DeepCollectionEquality().equals(other.source, source) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(idMeal),
-      const DeepCollectionEquality().hash(strMealThumb),
-      const DeepCollectionEquality().hash(strMeal),
-      const DeepCollectionEquality().hash(strCategory),
-      const DeepCollectionEquality().hash(strYoutube),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(thumb),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(youtube),
       const DeepCollectionEquality().hash(dateModified),
       const DeepCollectionEquality().hash(ingredients),
-      const DeepCollectionEquality().hash(strArea),
-      const DeepCollectionEquality().hash(strImageSource),
-      const DeepCollectionEquality().hash(strInstructions),
-      const DeepCollectionEquality().hash(strSource),
-      const DeepCollectionEquality().hash(strTags));
+      const DeepCollectionEquality().hash(area),
+      const DeepCollectionEquality().hash(imageSource),
+      const DeepCollectionEquality().hash(instructions),
+      const DeepCollectionEquality().hash(source),
+      const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -646,45 +640,45 @@ class _$_Meal implements _Meal {
 
 abstract class _Meal implements Meal {
   const factory _Meal(
-      {required final String idMeal,
-      required final String? strMealThumb,
-      required final String strMeal,
-      required final String? strCategory,
-      required final String? strYoutube,
+      {required final String id,
+      required final String? thumb,
+      required final String title,
+      required final String? category,
+      required final String? youtube,
       required final DateTime? dateModified,
       required final List<Ingredient> ingredients,
-      required final String? strArea,
-      required final String? strImageSource,
-      required final String? strInstructions,
-      required final String? strSource,
-      required final String? strTags}) = _$_Meal;
+      required final String? area,
+      required final String? imageSource,
+      required final String? instructions,
+      required final String? source,
+      required final String? tags}) = _$_Meal;
 
   factory _Meal.fromJson(Map<String, dynamic> json) = _$_Meal.fromJson;
 
   @override
-  String get idMeal => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String? get strMealThumb => throw _privateConstructorUsedError;
+  String? get thumb => throw _privateConstructorUsedError;
   @override
-  String get strMeal => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String? get strCategory => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
   @override
-  String? get strYoutube => throw _privateConstructorUsedError;
+  String? get youtube => throw _privateConstructorUsedError;
   @override
   DateTime? get dateModified => throw _privateConstructorUsedError;
   @override
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   @override
-  String? get strArea => throw _privateConstructorUsedError;
+  String? get area => throw _privateConstructorUsedError;
   @override
-  String? get strImageSource => throw _privateConstructorUsedError;
+  String? get imageSource => throw _privateConstructorUsedError;
   @override
-  String? get strInstructions => throw _privateConstructorUsedError;
+  String? get instructions => throw _privateConstructorUsedError;
   @override
-  String? get strSource => throw _privateConstructorUsedError;
+  String? get source => throw _privateConstructorUsedError;
   @override
-  String? get strTags => throw _privateConstructorUsedError;
+  String? get tags => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MealCopyWith<_Meal> get copyWith => throw _privateConstructorUsedError;

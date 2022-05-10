@@ -7,16 +7,16 @@ part of 'meal.dart';
 // **************************************************************************
 
 _$_MealBase _$$_MealBaseFromJson(Map<String, dynamic> json) => _$_MealBase(
-      idMeal: json['idMeal'] as String,
-      strMealThumb: json['strMealThumb'] as String?,
-      strMeal: json['strMeal'] as String,
+      id: json['id'] as String,
+      thumb: json['thumb'] as String?,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_MealBaseToJson(_$_MealBase instance) =>
     <String, dynamic>{
-      'idMeal': instance.idMeal,
-      'strMealThumb': instance.strMealThumb,
-      'strMeal': instance.strMeal,
+      'id': instance.id,
+      'thumb': instance.thumb,
+      'title': instance.title,
     };
 
 _$_MealBaseResponse _$$_MealBaseResponseFromJson(Map<String, dynamic> json) =>
@@ -32,37 +32,37 @@ Map<String, dynamic> _$$_MealBaseResponseToJson(_$_MealBaseResponse instance) =>
     };
 
 _$_Meal _$$_MealFromJson(Map<String, dynamic> json) => _$_Meal(
-      idMeal: json['idMeal'] as String,
-      strMealThumb: json['strMealThumb'] as String?,
-      strMeal: json['strMeal'] as String,
-      strCategory: json['strCategory'] as String?,
-      strYoutube: json['strYoutube'] as String?,
+      id: json['id'] as String,
+      thumb: json['thumb'] as String?,
+      title: json['title'] as String,
+      category: json['category'] as String?,
+      youtube: json['youtube'] as String?,
       dateModified: json['dateModified'] == null
           ? null
           : DateTime.parse(json['dateModified'] as String),
       ingredients: (json['ingredients'] as List<dynamic>)
           .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
           .toList(),
-      strArea: json['strArea'] as String?,
-      strImageSource: json['strImageSource'] as String?,
-      strInstructions: json['strInstructions'] as String?,
-      strSource: json['strSource'] as String?,
-      strTags: json['strTags'] as String?,
+      area: json['area'] as String?,
+      imageSource: json['imageSource'] as String?,
+      instructions: json['instructions'] as String?,
+      source: json['source'] as String?,
+      tags: json['tags'] as String?,
     );
 
 Map<String, dynamic> _$$_MealToJson(_$_Meal instance) => <String, dynamic>{
-      'idMeal': instance.idMeal,
-      'strMealThumb': instance.strMealThumb,
-      'strMeal': instance.strMeal,
-      'strCategory': instance.strCategory,
-      'strYoutube': instance.strYoutube,
+      'id': instance.id,
+      'thumb': instance.thumb,
+      'title': instance.title,
+      'category': instance.category,
+      'youtube': instance.youtube,
       'dateModified': instance.dateModified?.toIso8601String(),
       'ingredients': instance.ingredients,
-      'strArea': instance.strArea,
-      'strImageSource': instance.strImageSource,
-      'strInstructions': instance.strInstructions,
-      'strSource': instance.strSource,
-      'strTags': instance.strTags,
+      'area': instance.area,
+      'imageSource': instance.imageSource,
+      'instructions': instance.instructions,
+      'source': instance.source,
+      'tags': instance.tags,
     };
 
 _$_MealResponse _$$_MealResponseFromJson(Map<String, dynamic> json) =>

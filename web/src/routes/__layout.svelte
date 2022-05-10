@@ -2,11 +2,13 @@
 	//App.svelte
 	import { beforeNavigate, afterNavigate } from '$app/navigation';
 	import NProgress from 'nprogress';
+	import AnimatePresence from 'svelte-motion/src/components/AnimatePresence/AnimatePresence.svelte';
 
 	import NavBar from '$lib/components/appbar/nav.svelte';
-
+	import PageTransition from '$lib/transition/page-transition.svelte';
 	import 'nprogress/nprogress.css';
 	import '../styles/globals.css';
+	import { page } from '$app/stores';
 
 	NProgress.configure({
 		template: `
@@ -32,5 +34,9 @@
 
 <main>
 	<NavBar />
-	<slot />
+	<!-- <AnimatePresence> -->
+	{#key $page.url.pathname}
+		<slot />
+	{/key}
+	<!-- </AnimatePresence> -->
 </main>

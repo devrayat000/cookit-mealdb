@@ -1,14 +1,29 @@
 part of widgets_home;
 
-class RandomMeals extends StatelessWidget {
-  RandomMeals({Key? key}) : super(key: key);
+class RandomMeals extends fluent.StatefulWidget {
+  const RandomMeals({Key? key}) : super(key: key);
 
+  @override
+  State<RandomMeals> createState() => _RandomMealsState();
+}
+
+class _RandomMealsState extends State<RandomMeals>
+    with AutomaticKeepAliveClientMixin<RandomMeals> {
   final _scrollController = ScrollController();
+  late final Future<MealsResponse> _mealFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _mealFuture = RepositoryProvider.of<LocalApi>(context).getRandomMeals();
+  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return AsyncBuilder<MealsResponse>(
-      future: RepositoryProvider.of<LocalApi>(context).getRandomMeals(),
+      future: _mealFuture,
       builder: (context, data) {
         final meals = data.meals;
         print(meals);
@@ -41,8 +56,6 @@ class RandomMeals extends StatelessWidget {
         itemCount: meals.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          // mainAxisExtent: 12,
-          // maxCrossAxisExtent: 300.0,
           mainAxisSpacing: 12.0,
           crossAxisSpacing: 12.0,
           childAspectRatio: 18 / 24.5,
@@ -52,13 +65,16 @@ class RandomMeals extends StatelessWidget {
 
   Widget _buildItem(BuildContext context, List<Meal> meals, int index) {
     final meal = meals[index];
-    final _id = meal.idMeal;
+    final _id = meal.id;
     return MealCard(
       key: ValueKey('random-$_id'),
       mealId: _id,
-      imageUrl: meal.strMealThumb,
-      title: Text(meal.strMeal),
-      subtitle: meal.strCategory != null ? Text(meal.strCategory!) : null,
+      imageUrl: meal.thumb,
+      title: Text(meal.title),
+      subtitle: meal.category != null ? Text(meal.category!) : null,
     );
   }
+
+  @override
+  final wantKeepAlive = true;
 }

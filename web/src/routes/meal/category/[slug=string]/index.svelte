@@ -26,48 +26,57 @@
 
 <script lang="ts">
 	import { MetaTags } from 'svelte-meta-tags';
+	import { Motion } from 'svelte-motion';
 
 	import Meals from '$lib/components/list/meals.svelte';
 	import HeroSection from '$lib/components/card/hero.svelte';
 	import { capitalize } from '$lib/utils/capitalize';
 	import type { ICategoryWithMeals } from '$lib/types/category';
 	import { makeSlug } from '$lib/utils/slug';
+	import { pageFade } from '$lib/animation';
 
 	export let category: ICategoryWithMeals;
 </script>
 
-<main class="flex flex-col justify-between items-center">
-	<MetaTags
-		title={`Category - ${capitalize(category.name)} | COOKit`}
-		description={category.description}
-		additionalLinkTags={[
-			{ rel: 'icon', href: '/images/garnish.png' },
-			{
-				rel: 'alternate',
-				href: `/meal/category/${makeSlug(category.name)}/rss.xml`,
-				type: 'application/rss+xml'
-			}
-		]}
-		openGraph={{
-			title: `Category - ${capitalize(category.name)} | COOKit`,
-			description: category.description,
-			url: `https://cookingit.netlify.app/category/${category.name}`,
-			images: [
+<Motion variants={pageFade} initial="hidden" animate="show" exit="hidden" let:motion>
+	<main class="flex flex-col justify-between items-center" use:motion>
+		<MetaTags
+			title={`Category - ${capitalize(category.name)} | COOKit`}
+			description={category.description}
+			additionalLinkTags={[
+				{ rel: 'icon', href: '/images/garnish.png' },
 				{
-					url: category.thumb ?? '/demos/categories.png',
-					alt: `Category - ${capitalize(category.name)} | COOKit`
+					rel: 'alternate',
+					href: `/meal/category/${makeSlug(category.name)}/rss.xml`,
+					type: 'application/rss+xml'
 				}
-			]
-		}}
-	/>
-	<section class="container">
-		{#key category.strCategory}
-			<HeroSection
-				title={capitalize(category.name)}
-				description={category.description}
-				image={category.thumb}
-			/>
-		{/key}
-		<Meals meals={category.meals} />
-	</section>
-</main>
+			]}
+			openGraph={{
+				title: `Category - ${capitalize(category.name)} | COOKit`,
+				description: category.description,
+				url: `https://cookingit.netlify.app/category/${category.name}`,
+				images: [
+					{
+						url: category.thumb ?? '/demos/categories.png',
+						alt: `Category - ${capitalize(category.name)} | COOKit`
+					}
+				]
+			}}
+		/>
+		<section class="container">
+			{#key category.strCategory}
+				<HeroSection
+					title={capitalize(category.name)}
+					description={category.description}
+					image={category.thumb}
+				/>
+			{/key}
+			<Meals meals={category.meals} />
+		</section>
+	</main>
+</Motion>
+
+<style lang="postcss">
+	@tailwind components;
+	@tailwind utilities;
+</style>

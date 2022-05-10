@@ -26,7 +26,7 @@ class _LocalApi implements LocalApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<MealResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/meals/${id}',
+                .compose(_dio.options, '/meal/${id}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = MealResponse.fromJson(_result.data!);
@@ -44,10 +44,26 @@ class _LocalApi implements LocalApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<MealsResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/meals/random',
+                .compose(_dio.options, '/meal/random',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = MealsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CategoriesResponse> getCategories() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CategoriesResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/meal/category',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CategoriesResponse.fromJson(_result.data!);
     return value;
   }
 

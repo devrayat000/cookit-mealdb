@@ -7,9 +7,9 @@ part 'meal.freezed.dart';
 class MealBase with _$MealBase {
   // @With<IMealBase>()
   const factory MealBase({
-    required String idMeal,
-    required String? strMealThumb,
-    required String strMeal,
+    required String id,
+    required String? thumb,
+    required String title,
   }) = _MealBase;
 
   factory MealBase.fromJson(Map<String, dynamic> json) =>
@@ -30,18 +30,18 @@ class MealBaseResponse with _$MealBaseResponse {
 class Meal with _$Meal {
   // @With<IMeal>()
   const factory Meal({
-    required String idMeal,
-    required String? strMealThumb,
-    required String strMeal,
-    required String? strCategory,
-    required String? strYoutube,
+    required String id,
+    required String? thumb,
+    required String title,
+    required String? category,
+    required String? youtube,
     required DateTime? dateModified,
     required List<Ingredient> ingredients,
-    required String? strArea,
-    required String? strImageSource,
-    required String? strInstructions,
-    required String? strSource,
-    required String? strTags,
+    required String? area,
+    required String? imageSource,
+    required String? instructions,
+    required String? source,
+    required String? tags,
   }) = _Meal;
 
   factory Meal.fromJson(Map<String, dynamic> json) => _$MealFromJson(json);

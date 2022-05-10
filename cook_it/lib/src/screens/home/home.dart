@@ -57,6 +57,7 @@ class HomeScreen extends StatelessWidget {
         Platform.isWindows ? Expanded(child: _heroImage, flex: 1) : _heroImage;
 
     return SingleChildScrollView(
+      key: const PageStorageKey('home'),
       controller: _scrollController,
       padding: const EdgeInsets.symmetric(vertical: 36.0, horizontal: 20.0)
           .copyWith(bottom: 12.0),

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CategoryBase {
-  String get strCategory => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryBaseCopyWith<CategoryBase> get copyWith =>
@@ -28,7 +28,7 @@ abstract class $CategoryBaseCopyWith<$Res> {
   factory $CategoryBaseCopyWith(
           CategoryBase value, $Res Function(CategoryBase) then) =
       _$CategoryBaseCopyWithImpl<$Res>;
-  $Res call({String strCategory});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -41,12 +41,12 @@ class _$CategoryBaseCopyWithImpl<$Res> implements $CategoryBaseCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? strCategory = freezed,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -59,7 +59,7 @@ abstract class _$CategoryBaseCopyWith<$Res>
           _CategoryBase value, $Res Function(_CategoryBase) then) =
       __$CategoryBaseCopyWithImpl<$Res>;
   @override
-  $Res call({String strCategory});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -74,12 +74,12 @@ class __$CategoryBaseCopyWithImpl<$Res> extends _$CategoryBaseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? strCategory = freezed,
+    Object? name = freezed,
   }) {
     return _then(_CategoryBase(
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -88,14 +88,14 @@ class __$CategoryBaseCopyWithImpl<$Res> extends _$CategoryBaseCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CategoryBase implements _CategoryBase {
-  const _$_CategoryBase({required this.strCategory});
+  const _$_CategoryBase({required this.name});
 
   @override
-  final String strCategory;
+  final String name;
 
   @override
   String toString() {
-    return 'CategoryBase(strCategory: $strCategory)';
+    return 'CategoryBase(name: $name)';
   }
 
   @override
@@ -103,13 +103,12 @@ class _$_CategoryBase implements _CategoryBase {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CategoryBase &&
-            const DeepCollectionEquality()
-                .equals(other.strCategory, strCategory));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(strCategory));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -118,11 +117,10 @@ class _$_CategoryBase implements _CategoryBase {
 }
 
 abstract class _CategoryBase implements CategoryBase {
-  const factory _CategoryBase({required final String strCategory}) =
-      _$_CategoryBase;
+  const factory _CategoryBase({required final String name}) = _$_CategoryBase;
 
   @override
-  String get strCategory => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CategoryBaseCopyWith<_CategoryBase> get copyWith =>
@@ -135,10 +133,10 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Category {
-  String get idCategory => throw _privateConstructorUsedError;
-  String get strCategory => throw _privateConstructorUsedError;
-  String get strCategoryThumb => throw _privateConstructorUsedError;
-  String get strCategoryDescription => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get thumb => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -150,11 +148,7 @@ mixin _$Category {
 abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res>;
-  $Res call(
-      {String idCategory,
-      String strCategory,
-      String strCategoryThumb,
-      String strCategoryDescription});
+  $Res call({String id, String name, String thumb, String description});
 }
 
 /// @nodoc
@@ -167,27 +161,27 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? idCategory = freezed,
-    Object? strCategory = freezed,
-    Object? strCategoryThumb = freezed,
-    Object? strCategoryDescription = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? thumb = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      idCategory: idCategory == freezed
-          ? _value.idCategory
-          : idCategory // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategoryThumb: strCategoryThumb == freezed
-          ? _value.strCategoryThumb
-          : strCategoryThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategoryDescription: strCategoryDescription == freezed
-          ? _value.strCategoryDescription
-          : strCategoryDescription // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -198,11 +192,7 @@ abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
   factory _$CategoryCopyWith(_Category value, $Res Function(_Category) then) =
       __$CategoryCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String idCategory,
-      String strCategory,
-      String strCategoryThumb,
-      String strCategoryDescription});
+  $Res call({String id, String name, String thumb, String description});
 }
 
 /// @nodoc
@@ -216,27 +206,27 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? idCategory = freezed,
-    Object? strCategory = freezed,
-    Object? strCategoryThumb = freezed,
-    Object? strCategoryDescription = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? thumb = freezed,
+    Object? description = freezed,
   }) {
     return _then(_Category(
-      idCategory: idCategory == freezed
-          ? _value.idCategory
-          : idCategory // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
-          ? _value.strCategory
-          : strCategory // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategoryThumb: strCategoryThumb == freezed
-          ? _value.strCategoryThumb
-          : strCategoryThumb // ignore: cast_nullable_to_non_nullable
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategoryDescription: strCategoryDescription == freezed
-          ? _value.strCategoryDescription
-          : strCategoryDescription // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -246,26 +236,26 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Category implements _Category {
   const _$_Category(
-      {required this.idCategory,
-      required this.strCategory,
-      required this.strCategoryThumb,
-      required this.strCategoryDescription});
+      {required this.id,
+      required this.name,
+      required this.thumb,
+      required this.description});
 
   factory _$_Category.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryFromJson(json);
 
   @override
-  final String idCategory;
+  final String id;
   @override
-  final String strCategory;
+  final String name;
   @override
-  final String strCategoryThumb;
+  final String thumb;
   @override
-  final String strCategoryDescription;
+  final String description;
 
   @override
   String toString() {
-    return 'Category(idCategory: $idCategory, strCategory: $strCategory, strCategoryThumb: $strCategoryThumb, strCategoryDescription: $strCategoryDescription)';
+    return 'Category(id: $id, name: $name, thumb: $thumb, description: $description)';
   }
 
   @override
@@ -273,24 +263,21 @@ class _$_Category implements _Category {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Category &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.thumb, thumb) &&
             const DeepCollectionEquality()
-                .equals(other.idCategory, idCategory) &&
-            const DeepCollectionEquality()
-                .equals(other.strCategory, strCategory) &&
-            const DeepCollectionEquality()
-                .equals(other.strCategoryThumb, strCategoryThumb) &&
-            const DeepCollectionEquality()
-                .equals(other.strCategoryDescription, strCategoryDescription));
+                .equals(other.description, description));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(idCategory),
-      const DeepCollectionEquality().hash(strCategory),
-      const DeepCollectionEquality().hash(strCategoryThumb),
-      const DeepCollectionEquality().hash(strCategoryDescription));
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(thumb),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -305,21 +292,21 @@ class _$_Category implements _Category {
 
 abstract class _Category implements Category {
   const factory _Category(
-      {required final String idCategory,
-      required final String strCategory,
-      required final String strCategoryThumb,
-      required final String strCategoryDescription}) = _$_Category;
+      {required final String id,
+      required final String name,
+      required final String thumb,
+      required final String description}) = _$_Category;
 
   factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
 
   @override
-  String get idCategory => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get strCategory => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get strCategoryThumb => throw _privateConstructorUsedError;
+  String get thumb => throw _privateConstructorUsedError;
   @override
-  String get strCategoryDescription => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CategoryCopyWith<_Category> get copyWith =>
